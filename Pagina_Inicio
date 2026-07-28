@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patty's Store — Maquillaje & Moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-bar">
+    <a href="#inicio" class="logo">
+      <span class="rose-mark">🌹</span>
+      Patty<span>'s</span> Store
+    </a>
+    <nav class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotras</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Buscar">&#128269;</button>
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cta-btn ghost">Ver catálogo</a>
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cta-btn">Comprar ahora</a>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotras</a>
+    <a href="#categorias">Categorías</a>
+    <a href="#noticias">Noticias</a>
+    <a href="#contacto">Contacto</a>
+    <div class="mobile-cta"><a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cta-btn" style="display:block;text-align:center;">Comprar ahora</a></div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Colección invierno · nuevos looks</div>
+      <h1 class="hero-title">Maquillaje y moda<br><span class="swipe">que hablan por ti</span></h1>
+      <p class="hero-text">En Patty's Store encuentras labiales, bases, sombras y prendas seleccionadas para que tu estilo se vea tan bien como se siente. Envíos a todo el país.</p>
+      <div class="hero-ctas">
+        <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cta-btn">Explorar colección</a>
+        <a href="#categorias" class="see-more">Ver categorías →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop" alt="Productos de maquillaje Patty's Store">
+      <div class="hero-badge">Envío<br>gratis</div>
+      <div class="hero-dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>MAQUILLAJE</span><span>·</span><span>ROPA</span><span>·</span><span>ACCESORIOS</span><span>·</span><span>ZAPATOS</span><span>·</span><span>CUIDADO DE LA PIEL</span><span>·</span>
+    <span>MAQUILLAJE</span><span>·</span><span>ROPA</span><span>·</span><span>ACCESORIOS</span><span>·</span><span>ZAPATOS</span><span>·</span><span>CUIDADO DE LA PIEL</span><span>·</span>
+  </div>
+</div>
+
+<!-- Business info bar: mission + contact info -->
+<section class="info-bar" id="nosotros">
+  <div class="wrap">
+    <div class="info-bar-top">
+      <div class="info-logo-circle">Patty's<br>Store</div>
+    </div>
+    <div class="info-bar-body">
+      <div class="info-bar-main">
+        <h2>Quiénes somos</h2>
+        <p>Somos una tienda donde encontrarás ropa, accesorios, zapatos y productos para el cuidado de la piel, y mucho más. Nos enfocamos en ofrecer calidad, estilo y una excelente atención, para que siempre encuentres lo que buscas.</p>
+        <div class="info-meta">
+          <div><span class="ico">📞</span> 3151-3309</div>
+          <div><span class="ico">📍</span> Loarque, mercado Perisur, calle principal, contiguo al depósito de Coca-Cola, local 404</div>
+          <div><span class="ico">🕒</span> De lunes a sábado, de 9am a 5pm</div>
+        </div>
+      </div>
+      <div class="info-social">
+        <a href="#" aria-label="Instagram" target="_blank" rel="noopener">📷</a>
+        <a href="#" aria-label="Facebook" target="_blank" rel="noopener">📘</a>
+        <a href="#" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categorias">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Explora</div>
+      <h2 class="section-title">Compra por categoría</h2>
+    </div>
+    <div class="categories">
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cat-card">
+        <div class="cat-icon">💄</div>
+        <h3>Maquillaje</h3>
+        <p>Labiales, bases y sombras</p>
+      </a>
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cat-card">
+        <div class="cat-icon">👗</div>
+        <h3>Ropa</h3>
+        <p>Prendas para toda ocasión</p>
+      </a>
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cat-card">
+        <div class="cat-icon">👠</div>
+        <h3>Zapatos</h3>
+        <p>Calzado para cada estilo</p>
+      </a>
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cat-card">
+        <div class="cat-icon">🧴</div>
+        <h3>Cuidado de la piel</h3>
+        <p>Skincare y perfumería</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section products-section" id="productos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Lo más pedido</div>
+      <h2 class="section-title">Productos destacados</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">💄</div>
+        <div class="product-info">
+          <span class="product-tag">Maquillaje</span>
+          <h4>Labial Mate Ruby</h4>
+          <div class="product-price">
+            <strong>L. 180</strong>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👗</div>
+        <div class="product-info">
+          <span class="product-tag">Ropa</span>
+          <h4>Vestido Puce</h4>
+          <div class="product-price">
+            <strong>L. 650</strong>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👠</div>
+        <div class="product-info">
+          <span class="product-tag">Zapatos</span>
+          <h4>Tacón Almond</h4>
+          <div class="product-price">
+            <strong>L. 420</strong>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">✨</div>
+        <div class="product-info">
+          <span class="product-tag">Maquillaje</span>
+          <h4>Paleta Sombras Pearl</h4>
+          <div class="product-price">
+            <strong>L. 320</strong>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:44px;">
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cta-btn">Ver catálogo completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- Noticias y eventos recientes -->
+<section class="section news-section" id="noticias">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Mantente al día</div>
+      <h2 class="section-title">Noticias y eventos</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <span class="news-date">Julio 2026</span>
+        <h3>Nueva colección de invierno ya disponible</h3>
+        <p>Llegaron prendas y accesorios nuevos para la temporada. Visita el catálogo para ver las últimas piezas.</p>
+        <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener">Ver colección →</a>
+      </div>
+      <div class="news-card">
+        <span class="news-date">Próximamente</span>
+        <h3>Jornada de maquillaje y asesoría de imagen</h3>
+        <p>Un sábado especial en tienda con demostraciones de productos y descuentos exclusivos para clientas.</p>
+        <a href="#contacto">Más información →</a>
+      </div>
+      <div class="news-card">
+        <span class="news-date">Este mes</span>
+        <h3>20% de descuento en cuidado de la piel</h3>
+        <p>Aprovecha el descuento en toda la línea de skincare durante las compras en tienda y por catálogo.</p>
+        <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener">Ver productos →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="mision">
+  <div class="wrap promo">
+    <div class="promo-visual">"Calidad, estilo y una excelente atención, para que siempre encuentres lo que buscas."</div>
+    <div class="promo-text">
+      <div class="section-eyebrow">Nuestra misión</div>
+      <h2>Hecho para mujeres que no se conforman</h2>
+      <p>Patty's Store nació de la pasión por la belleza y la moda accesible. Seleccionamos cada pieza y cada producto pensando en calidad, tendencia y precio justo, para acompañarte en cada ocasión.</p>
+      <a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener" class="cta-btn">Conoce el catálogo</a>
+      <div class="promo-stats">
+        <div><strong>500+</strong><span>Clientas felices</span></div>
+        <div><strong>120+</strong><span>Productos</span></div>
+        <div><strong>4.9</strong><span>Calificación</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="contacto">
+  <div class="wrap">
+    <h2>Sé la primera en enterarte</h2>
+    <p>Suscríbete y recibe ofertas exclusivas de maquillaje, ropa y accesorios directo a tu correo.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+      <input type="email" placeholder="Tu correo electrónico" required>
+      <button type="submit">Suscribirme</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Patty's Store</h3>
+        <p>Ropa, accesorios, zapatos y productos para el cuidado de la piel, seleccionados con cariño para realzar tu estilo único.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="https://vercatalogo.com/pattys/products/by-all/all" target="_blank" rel="noopener">Ver catálogo</a></li>
+          <li><a href="#categorias">Categorías</a></li>
+          <li><a href="#noticias">Noticias</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:31513309">📞 3151-3309</a></li>
+          <li><a href="#">📍 Loarque, mercado Perisur, local 404</a></li>
+          <li><a href="#">🕒 Lun–Sáb, 9am–5pm</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Patty's Store. Todos los derechos reservados.</span>
+      <span>Diseñado con cariño 💕</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(link=>{
+    link.addEventListener('click', ()=> mobileMenu.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
