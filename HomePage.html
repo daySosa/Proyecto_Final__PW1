@@ -1,255 +1,353 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patty's Store | Ropa, Accesorios y Cuidado de la Piel</title>
-  <meta name="description" content="Patty's Store: tienda de ropa, accesorios, zapatos y productos para el cuidado de la piel. Skincare coreano, CeraVe, L'Oreal, Dr. Rashel y maquillaje con calidad y estilo." />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patty's Store — Maquillaje & Moda</title>
+<meta name="description" content="Patty's Store: tienda de maquillaje, ropa y accesorios en Honduras. Conoce nuestra misión, catálogo, novedades y eventos recientes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- ================= BARRA DE INFORMACIÓN ================= -->
-  <div class="info-bar">
-    <div class="container">
-      <div class="info-left">
-        <span class="info-item">
-          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
-          31513309
-        </span>
-        <span class="info-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.2 7 12 8 12s8-6.8 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
-          Loarque, mercado Perisur, calle principal, contiguo al depósito de Coca-Cola, local 404
-        </span>
-        <span class="info-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10.6l4 2.4-.8 1.3-4.8-2.9V6h1.6v6.6z"/></svg>
-          Lunes a sábado, de 9am a 5pm
-        </span>
+<header id="siteHeader">
+  <div class="wrap nav-bar">
+    <a href="HomePage.html" class="logo">Patty<span>'s</span> Store</a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#nosotros">Nosotras</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- Todo lo demás (Más, catálogo, comprar, buscar, menú) se agrupa en la esquina derecha -->
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+
+      <div class="nav-more" id="navMore">
+        <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="more-bars"><span></span><span></span><span></span></span>
+          Más
+        </button>
+        <div class="more-menu" id="moreMenu" role="menu">
+          <a href="#mision" role="menuitem">Nuestra Misión</a>
+          <a href="#novedades" role="menuitem">Noticias &amp; Eventos</a>
+          <a href="#categorias" role="menuitem">Categorías</a>
+        </div>
       </div>
-      <div class="social-icons">
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Patty's Store">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .3 2.7.6.7.3 1.3.7 1.9 1.3.6.6 1 1.2 1.3 1.9.3.7.5 1.5.6 2.7.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 2-.6 2.7a5.4 5.4 0 01-1.3 1.9 5.4 5.4 0 01-1.9 1.3c-.7.3-1.5.5-2.7.6-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.3-2.7-.6a5.4 5.4 0 01-1.9-1.3 5.4 5.4 0 01-1.3-1.9c-.3-.7-.5-1.5-.6-2.7-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.3-2 .6-2.7.3-.7.7-1.3 1.3-1.9.6-.6 1.2-1 1.9-1.3.7-.3 1.5-.5 2.7-.6C8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zm6.4-10.4a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z"/></svg>
-        </a>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Patty's Store">
-          <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C15.9 3.1 14.9 3 13.7 3c-2.6 0-4.4 1.6-4.4 4.4v2.4H6.6v3.2h2.7v8h4.2z"/></svg>
-        </a>
-        <a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Patty's Store">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18.2a8.1 8.1 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.3-1.2-3.3-2.7-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/></svg>
-        </a>
-      </div>
+
+      <a href="#productos" class="cta-btn ghost cat-cta">Ver catálogo</a>
+      <a href="#contacto" class="cta-btn buy-cta">Comprar ahora</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 
-  <!-- ================= HEADER ================= -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="Ir al inicio de Patty's Store">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-          <circle cx="32" cy="32" r="30" fill="#f2b6c6"/>
-          <path d="M32 18c6 0 11 5 11 11 0 8-7 14-11 17-4-3-11-9-11-17 0-6 5-11 11-11z" fill="#c9578a"/>
-          <circle cx="32" cy="29" r="4" fill="#fff"/>
-        </svg>
-        Patty's Store
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
-        <ul>
-          <li><a href="index.html" aria-current="page">Inicio</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="blog.html">Novedades</a></li>
-          <li><a href="contacto.html" class="btn-nav">Contáctanos</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ================= CATEGORÍAS ================= -->
-  <nav class="category-nav" aria-label="Categorías de productos">
-    <div class="container">
-      <ul>
-        <li><a href="productos.html" class="category-chip active">Productos</a></li>
-        <li><a href="productos.html#skincare-coreano" class="category-chip">Skincare Coreano Original</a></li>
-        <li><a href="productos.html#cerave" class="category-chip">CeraVe</a></li>
-        <li><a href="productos.html#cuidado-corporal" class="category-chip">Cuidado Corporal</a></li>
-        <li><a href="productos.html#loreal" class="category-chip">L'Oreal</a></li>
-        <li><a href="productos.html#dr-rashel" class="category-chip">Dr. Rashel</a></li>
-        <li><a href="productos.html#maquillaje" class="category-chip">Maquillaje</a></li>
-        <li><a href="productos.html#carteras" class="category-chip">Carteras</a></li>
-      </ul>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#nosotros">Nosotras</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#mision">Nuestra Misión</a>
+    <a href="#novedades">Noticias &amp; Eventos</a>
+    <a href="#categorias">Categorías</a>
+    <div class="mobile-cta">
+      <a href="#productos" class="cta-btn ghost" style="display:block;text-align:center;margin-bottom:10px;">Ver catálogo</a>
+      <a href="#contacto" class="cta-btn" style="display:block;text-align:center;">Comprar ahora</a>
     </div>
   </nav>
+</header>
 
-  <main>
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Belleza que comienza contigo</h1>
-          <p>
-            En Patty's Store encontrarás ropa, accesorios, zapatos y productos para el
-            cuidado de la piel, todo en un solo lugar. Nos enfocamos en ofrecer calidad,
-            estilo y una atención cercana para que siempre encuentres lo que buscas.
-          </p>
-          <div class="hero-actions">
-            <a href="productos.html" class="btn btn-primary">Ver Productos</a>
-            <a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Pedir por WhatsApp</a>
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar en Patty's Store">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Busca labiales, vestidos, bolsos, skincare..." autocomplete="off">
+      <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios, cuidado personal y novedades.</p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="wrap hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Colección invierno · nuevos looks</div>
+        <h1 class="hero-title">Maquillaje y moda<br><span class="swipe">que hablan por ti</span></h1>
+        <p class="hero-text">En Patty's Store encuentras labiales, bases, sombras, ropa y
+        accesorios seleccionados para que tu estilo se vea tan bien como se siente. Envíos a todo el país.</p>
+        <div class="hero-ctas">
+          <a href="#productos" class="cta-btn">Explorar colección</a>
+          <a href="#categorias" class="see-more">Ver categorías →</a>
+        </div>
+      </div>
+
+      <figure class="hero-visual">
+        <div class="hero-slider" id="heroSlider">
+          <div class="hero-slide active">
+            <img src="images/hero-1 (2).jpeg" alt="Productos de maquillaje Bobbi Brown sobre superficie de mármol">
+          </div>
+          <div class="hero-slide">
+            <img src="images/hero-2.jpeg" alt="Aceite facial Nektar con vitamina C y cúrcuma sobre base de piedra">
+          </div>
+          <div class="hero-slide">
+            <img src="images/hero-3.jpg" alt="Producto destacado de la colección de Patty's Store">
           </div>
         </div>
-        <figure class="hero-art">
-          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de productos de belleza sobre una repisa">
-            <rect x="0" y="240" width="400" height="12" fill="#c9578a"/>
-            <rect x="60" y="140" width="50" height="100" rx="10" fill="#f2b6c6"/>
-            <circle cx="85" cy="130" r="20" fill="#c9578a"/>
-            <rect x="140" y="160" width="45" height="80" rx="22" fill="#f7d9e3"/>
-            <rect x="150" y="130" width="25" height="35" fill="#7d2a4d"/>
-            <rect x="210" y="120" width="55" height="120" rx="10" fill="#ffffff" stroke="#c9578a" stroke-width="4"/>
-            <rect x="220" y="105" width="35" height="20" fill="#c9578a"/>
-            <rect x="290" y="150" width="50" height="90" rx="25" fill="#f2b6c6"/>
-            <circle cx="315" cy="140" r="16" fill="#7d2a4d"/>
-          </svg>
-        </figure>
+        <div class="hero-dots" id="heroDots" role="tablist" aria-label="Seleccionar imagen destacada">
+          <button class="dot active" role="tab" aria-selected="true" aria-label="Ver imagen 1"></button>
+          <button class="dot" role="tab" aria-selected="false" aria-label="Ver imagen 2"></button>
+          <button class="dot" role="tab" aria-selected="false" aria-label="Ver imagen 3"></button>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>MAQUILLAJE</span><span>·</span><span>ROPA</span><span>·</span><span>ACCESORIOS</span><span>·</span><span>ENVÍOS A TODO EL PAÍS</span><span>·</span>
+      <span>MAQUILLAJE</span><span>·</span><span>ROPA</span><span>·</span><span>ACCESORIOS</span><span>·</span><span>ENVÍOS A TODO EL PAÍS</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- ================= MISIÓN ================= -->
+  <section class="section" id="mision">
+    <div class="wrap mission-inner">
+      <div class="mission-text">
+        <div class="section-eyebrow">Quiénes somos</div>
+        <h2 class="section-title-left">Belleza y estilo accesibles para cada mujer</h2>
+        <p>Patty's Store es un negocio hondureño dedicado a la venta de maquillaje, ropa, accesorios y productos para el cuidado de la piel. Nuestra misión es ofrecer productos de calidad, a precios justos, con una atención cercana para que cada clienta encuentre lo que busca y se sienta segura de su estilo.</p>
+        <p>Trabajamos con marcas reconocidas de skincare coreano, CeraVe, L'Oreal y Dr. Rashel, además de piezas de moda y maquillaje pensadas para todos los gustos.</p>
       </div>
-    </section>
-
-    <!-- ================= CATEGORÍAS DESTACADAS ================= -->
-    <section class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Explora por categoría</h2>
-          <p>Todo lo que necesitas para tu cuidado personal y tu estilo, en un solo lugar.</p>
-        </div>
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="card-media">
-              <svg viewBox="0 0 120 100" role="img" aria-label="Ilustración de productos de skincare coreano">
-                <rect x="35" y="30" width="50" height="55" rx="10" fill="#f7d9e3"/>
-                <rect x="45" y="15" width="30" height="18" fill="#c9578a"/>
-              </svg>
-            </div>
-            <div class="card-body">
-              <span class="card-tag">Skincare</span>
-              <h3>Skincare Coreano Original</h3>
-              <p class="text-muted">Rutinas completas para el cuidado facial con productos originales importados.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <svg viewBox="0 0 120 100" role="img" aria-label="Ilustración de productos CeraVe y L'Oreal">
-                <rect x="30" y="25" width="25" height="60" rx="6" fill="#ffffff" stroke="#c9578a" stroke-width="3"/>
-                <rect x="65" y="35" width="25" height="50" rx="6" fill="#f2b6c6"/>
-              </svg>
-            </div>
-            <div class="card-body">
-              <span class="card-tag">Cuidado Corporal</span>
-              <h3>CeraVe · L'Oreal · Dr. Rashel</h3>
-              <p class="text-muted">Marcas reconocidas para hidratar, limpiar y cuidar tu piel todos los días.</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <svg viewBox="0 0 120 100" role="img" aria-label="Ilustración de maquillaje y carteras">
-                <circle cx="45" cy="55" r="20" fill="#c9578a"/>
-                <rect x="75" y="35" width="30" height="40" rx="8" fill="#7d2a4d"/>
-              </svg>
-            </div>
-            <div class="card-body">
-              <span class="card-tag">Estilo</span>
-              <h3>Maquillaje y Carteras</h3>
-              <p class="text-muted">Complementa tu look con nuestra selección de maquillaje y carteras de moda.</p>
-            </div>
-          </article>
-        </div>
+      <div class="mission-stats">
+        <div><strong>500+</strong><span>Clientas felices</span></div>
+        <div><strong>120+</strong><span>Productos</span></div>
+        <div><strong>9am–5pm</strong><span>Lun. a sáb.</span></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ================= PRODUCTOS DESTACADOS ================= -->
-    <section class="section section-alt">
-      <div class="container">
-        <div class="section-title">
-          <h2>Nuestros más vendidos</h2>
-          <p>Los favoritos de nuestras clientas este mes.</p>
+  <!-- ================= NOTICIAS Y EVENTOS ================= -->
+  <section class="section products-section" id="novedades">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Al día</div>
+        <h2 class="section-title">Noticias y eventos recientes</h2>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <span class="news-date">22 Jul 2026</span>
+          <h3>Llegó la nueva línea de skincare coreano</h3>
+          <p>Ya está disponible en tienda la nueva colección de sérums y mascarillas coreanas, ideales para hidratar y renovar tu piel.</p>
+          <a href="#productos" class="news-link">Ver productos →</a>
+        </article>
+        <article class="news-card">
+          <span class="news-date">10 Ago 2026</span>
+          <h3>Feria de belleza en Mercado Perisur</h3>
+          <p>Estaremos con un stand especial de maquillaje y descuentos exclusivos. ¡Te esperamos con promociones solo por ese día!</p>
+          <a href="#contacto" class="news-link">Más información →</a>
+        </article>
+        <article class="news-card">
+          <span class="news-date">30 Ago 2026</span>
+          <h3>Rebajas de temporada: hasta 30% OFF</h3>
+          <p>Ropa y accesorios seleccionados con descuento por cambio de temporada. Cantidades limitadas, ¡no te quedes sin el tuyo!</p>
+          <a href="#productos" class="news-link">Ver catálogo →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORÍAS ================= -->
+  <section class="section" id="categorias">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Explora</div>
+        <h2 class="section-title">Compra por categoría</h2>
+      </div>
+      <div class="categories">
+        <div class="cat-card">
+          <div class="cat-icon"><img src="images/cat-maquillaje.jpg" alt="Labiales y sombras de maquillaje en tonos rosa"></div>
+          <h3>Maquillaje</h3>
+          <p>Labiales, bases y sombras</p>
         </div>
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="card-media">
-              <svg viewBox="0 0 120 100" role="img" aria-label="Ilustración de serum facial"><rect x="45" y="20" width="30" height="60" rx="8" fill="#f7d9e3"/><rect x="52" y="10" width="16" height="14" fill="#7d2a4d"/></svg>
-            </div>
-            <div class="card-body">
-              <h3>Sérum Facial Coreano</h3>
-              <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-              <div class="price">L 350.00</div>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-media">
-              <svg viewBox="0 0 120 100" role="img" aria-label="Ilustración de crema hidratante CeraVe"><rect x="35" y="30" width="50" height="45" rx="10" fill="#ffffff" stroke="#c9578a" stroke-width="3"/></svg>
-            </div>
-            <div class="card-body">
-              <h3>Crema Hidratante CeraVe</h3>
-              <div class="stars" aria-label="4.5 de 5 estrellas">★★★★☆</div>
-              <div class="price"><span class="price-old">L 480.00</span>L 399.00</div>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-media">
-              <svg viewBox="0 0 120 100" role="img" aria-label="Ilustración de cartera de moda"><rect x="30" y="35" width="60" height="40" rx="8" fill="#7d2a4d"/></svg>
-            </div>
-            <div class="card-body">
-              <h3>Cartera Casual Rosa</h3>
-              <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-              <div class="price">L 550.00</div>
-            </div>
-          </article>
+        <div class="cat-card">
+          <div class="cat-icon"><img src="images/cat-ropa.jpg" alt="Prendas de ropa para toda ocasión"></div>
+          <h3>Ropa</h3>
+          <p>Prendas para toda ocasión</p>
         </div>
-        <div class="text-center mt-2">
-          <a href="productos.html" class="btn btn-secondary">Ver todos los productos</a>
+        <div class="cat-card">
+          <div class="cat-icon"><img src="images/cat-accesorios.jpg" alt="Bolsos y accesorios de moda"></div>
+          <h3>Accesorios</h3>
+          <p>Bolsos, joyería y más</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon"><img src="images/cat-cuidado-personal.jpg" alt="Productos de cuidado personal y skincare"></div>
+          <h3>Cuidado personal</h3>
+          <p>Skincare y perfumería</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ================= CTA ================= -->
-    <section class="cta-band">
-      <div class="container">
-        <h2>¿Buscas algo en especial?</h2>
-        <p>Escríbenos por WhatsApp y te ayudamos a encontrar el producto perfecto para ti.</p>
-        <a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer" class="btn btn-secondary mt-2">Escribir por WhatsApp</a>
+  <!-- ================= PRODUCTOS DESTACADOS ================= -->
+  <section class="section products-section" id="productos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Lo más pedido</div>
+        <h2 class="section-title">Productos destacados</h2>
       </div>
-    </section>
-  </main>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-img"><img src="images/producto-labial.jpg" alt="Labial Mate Ruby"></div>
+          <div class="product-info">
+            <span class="product-tag">Maquillaje</span>
+            <h4>Labial Mate Ruby</h4>
+            <div class="product-price">
+              <strong>L. 180</strong>
+              <button class="add-btn" aria-label="Agregar Labial Mate Ruby al carrito">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img"><img src="images/producto-vestido.jpg" alt="Vestido color puce"></div>
+          <div class="product-info">
+            <span class="product-tag">Ropa</span>
+            <h4>Vestido Puce</h4>
+            <div class="product-price">
+              <strong>L. 650</strong>
+              <button class="add-btn" aria-label="Agregar Vestido Puce al carrito">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img"><img src="images/producto-bolso.jpg" alt="Bolso color almendra"></div>
+          <div class="product-info">
+            <span class="product-tag">Accesorios</span>
+            <h4>Bolso Almond</h4>
+            <div class="product-price">
+              <strong>L. 420</strong>
+              <button class="add-btn" aria-label="Agregar Bolso Almond al carrito">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img"><img src="images/producto-paleta.jpg" alt="Paleta de sombras y maquillaje de lujo"></div>
+          <div class="product-info">
+            <span class="product-tag">Maquillaje</span>
+            <h4>Paleta Sombras Pearl</h4>
+            <div class="product-price">
+              <strong>L. 320</strong>
+              <button class="add-btn" aria-label="Agregar Paleta Sombras Pearl al carrito">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-col">
+  <!-- ================= NOSOTRAS ================= -->
+  <section class="section nosotras-section" id="nosotros">
+    <div class="wrap nosotras-inner">
+      <figure class="nosotras-media">
+        <img src="images/nosotras-equipo.jpg" alt="Equipo y tienda de Patty's Store">
+        <blockquote class="nosotras-quote">
+          "Cada producto está pensado para que te veas y te sientas como tú misma, solo que mejor."
+        </blockquote>
+      </figure>
+
+      <div class="nosotras-content">
+        <div class="section-eyebrow">Nuestra historia</div>
+        <h2>Hecho para mujeres que no se conforman</h2>
+        <p>Patty's Store nació de la pasión por la belleza y la moda accesible. Seleccionamos cada pieza y cada producto de maquillaje pensando en calidad, tendencia y precio justo, para acompañarte en cada versión de ti misma.</p>
+
+        <ul class="nosotras-highlights">
+          <li>
+            <span class="highlight-icon">✓</span>
+            <div>
+              <strong>Calidad garantizada</strong>
+              <span>Productos originales y verificados</span>
+            </div>
+          </li>
+          <li>
+            <span class="highlight-icon">✓</span>
+            <div>
+              <strong>Atención cercana</strong>
+              <span>Te asesoramos según tu estilo</span>
+            </div>
+          </li>
+          <li>
+            <span class="highlight-icon">✓</span>
+            <div>
+              <strong>Envíos rápidos</strong>
+              <span>A todo Honduras</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="nosotras-actions">
+          <a href="#productos" class="cta-btn">Conoce el catálogo</a>
+        </div>
+
+        <div class="promo-stats">
+          <div><strong>500+</strong><span>Clientas felices</span></div>
+          <div><strong>120+</strong><span>Productos</span></div>
+          <div><strong>4.9</strong><span>Calificación</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NEWSLETTER / CONTACTO ================= -->
+  <section class="newsletter" id="contacto">
+    <div class="wrap">
+      <h2>Sé la primera en enterarte</h2>
+      <p>Suscríbete y recibe ofertas exclusivas de maquillaje y moda directo a tu correo.</p>
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <div class="form-field">
+          <input type="email" id="newsletterEmail" name="email" placeholder="Tu correo electrónico" required>
+          <span class="field-error" id="newsletterError"></span>
+        </div>
+        <button type="submit">Suscribirme</button>
+      </form>
+      <p class="form-success" id="newsletterSuccess" role="status"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
         <h3>Patty's Store</h3>
-        <p>Ropa, accesorios, zapatos y productos para el cuidado de la piel, con calidad y estilo.</p>
+        <p>Maquillaje, ropa y accesorios seleccionados con cariño para realzar tu estilo único. Envíos a todo Honduras.</p>
       </div>
       <div class="footer-col">
-        <h4>Enlaces</h4>
+        <h4>Tienda</h4>
         <ul>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="contacto.html">Contáctanos</a></li>
+          <li><a href="#categorias">Maquillaje</a></li>
+          <li><a href="#categorias">Ropa</a></li>
+          <li><a href="#categorias">Accesorios</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contacto</h4>
-        <address>
-          Loarque, mercado Perisur, local 404<br />
-          <a href="tel:+50431513309">31513309</a><br />
-          Lunes a sábado, 9am - 5pm
-        </address>
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#novedades">Noticias y eventos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#mision">Nuestra misión</a></li>
+        </ul>
       </div>
       <div class="footer-col">
         <h4>Síguenos</h4>
-        <ul class="social-links">
+        <ul>
           <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
@@ -257,15 +355,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Patty's Store. Todos los derechos reservados.</p>
+      <span>© <span id="year"></span> Patty's Store. Todos los derechos reservados.</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- Botón flotante de WhatsApp -->
-  <a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Escribir por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18.2a8.1 8.1 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
-  </a>
-
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
