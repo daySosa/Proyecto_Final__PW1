@@ -3,6 +3,7 @@ if (blogFilters) {
   const filters = blogFilters.querySelectorAll('.filter-chip');
   const cards = document.querySelectorAll('#blogGrid .blog-card');
   const featured = document.querySelector('.featured-post');
+  const featuredSection = document.querySelector('.featured-post-section');
   const emptyMsg = document.getElementById('blogEmpty');
 
   filters.forEach(btn => {
@@ -20,8 +21,9 @@ if (blogFilters) {
         if (match) visibleCount++;
       });
 
-      if (featured) {
-        featured.style.display = (filter === 'todos' || featured.dataset.category === filter) ? '' : 'none';
+      const featuredMatch = featured && (filter === 'todos' || featured.dataset.category === filter);
+      if (featuredSection) {
+        featuredSection.style.display = featuredMatch ? '' : 'none';
       }
 
       if (emptyMsg) emptyMsg.hidden = visibleCount > 0;
