@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producto — Patty's Store</title>
+<meta name="description" content="Detalle de producto en Patty's Store: descripción, precio y opción de agregar al carrito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/producto_style.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-bar">
+    <a href="index.html" class="logo">Patty<span>'s</span> Store</a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="maquillaje.html">Maquillaje</a>
+      <a href="ropa.html">Ropa</a>
+      <a href="accesorios.html">Accesorios</a>
+      <a href="skincare.html">Skincare</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+
+      <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" onclick="location.href='carrito.html'">
+        &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
+      </button>
+
+      <a href="ofertas.html" class="cta-btn ghost cat-cta">Ofertas</a>
+      <a href="carrito.html" class="cta-btn buy-cta">Ver carrito</a>
+
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+    <a href="index.html">Inicio</a>
+    <a href="maquillaje.html">Maquillaje</a>
+    <a href="ropa.html">Ropa</a>
+    <a href="accesorios.html">Accesorios</a>
+    <a href="skincare.html">Skincare</a>
+    <a href="ofertas.html">Ofertas</a>
+    <a href="contacto.html">Contacto</a>
+    <div class="mobile-cta">
+      <a href="carrito.html" class="cta-btn" style="display:block;text-align:center;">Ver carrito (<span id="cartCountMobile">0</span>)</a>
+    </div>
+  </nav>
+</header>
+
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar en Patty's Store">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Busca labiales, vestidos, bolsos, skincare..." autocomplete="off">
+      <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios, cuidado personal y novedades.</p>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section class="section" id="productoDetalle">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="index.html">Inicio</a>
+        <span class="sep">/</span>
+        <a href="#" id="breadcrumbCategoria">Categoría</a>
+        <span class="sep">/</span>
+        <span class="current" id="breadcrumbNombre">Producto</span>
+      </nav>
+    </div>
+
+    <div class="wrap producto-wrap" id="productoContenido" hidden>
+
+      <div class="producto-media">
+        <div class="producto-img-wrap">
+          <span class="producto-stock-badge" id="productoStock">Disponible</span>
+          <img id="productoImg" src="" alt="">
+        </div>
+        <div class="producto-thumbs" id="productoThumbs" hidden></div>
+      </div>
+
+      <div class="producto-info-wrap">
+        <span class="product-tag" id="productoCategoria"></span>
+        <h1 id="productoNombre"></h1>
+        <p class="producto-precio" id="productoPrecio"></p>
+        <p class="producto-descripcion" id="productoDescripcion"></p>
+
+        <div class="producto-acciones">
+          <div class="producto-cantidad">
+            <button type="button" id="cantidadMenos" aria-label="Reducir cantidad">−</button>
+            <input type="number" id="productoCantidad" value="1" min="1" aria-label="Cantidad">
+            <button type="button" id="cantidadMas" aria-label="Aumentar cantidad">+</button>
+          </div>
+
+          <button class="cta-btn producto-add-btn" id="productoAgregarBtn">Agregar al carrito</button>
+          <button class="cta-btn ghost producto-buy-btn" id="productoComprarBtn">Comprar ahora</button>
+        </div>
+
+        <p class="producto-agregado" id="productoAgregadoMsg" role="status" hidden>Producto agregado al carrito ✓</p>
+
+        <div class="trust-bar">
+          <div class="trust-item"><span class="trust-icon">🚚</span>Envío a todo Honduras</div>
+          <div class="trust-item"><span class="trust-icon">💵</span>Pago contra entrega</div>
+          <div class="trust-item"><span class="trust-icon">↩️</span>Cambios en 5 días</div>
+        </div>
+
+        <div class="producto-meta">
+          <p><strong>SKU:</strong> <span id="productoSku"></span></p>
+          <p><strong>Categoría:</strong> <span id="productoTags"></span></p>
+        </div>
+
+        <div class="producto-compartir">
+          <span>Compartir:</span>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook">Facebook</a>
+          <a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp">WhatsApp</a>
+        </div>
+
+        <a href="index.html" id="productoVolver" class="news-link producto-volver">← Volver al catálogo</a>
+      </div>
+    </div>
+
+    <div class="wrap producto-tabs-wrap" id="productoTabsWrap" hidden>
+      <div class="producto-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="descripcion" role="tab" aria-selected="true">Descripción</button>
+        <button class="tab-btn" data-tab="uso" role="tab" aria-selected="false" id="tabUsoBtn"><span id="tabUsoLabel">Modo de uso</span></button>
+      </div>
+      <div class="tab-panel active" id="tabDescripcion"></div>
+      <div class="tab-panel" id="tabUso"></div>
+    </div>
+
+    <div class="wrap" id="productoNoEncontrado" hidden>
+      <p class="blog-empty">No encontramos este producto. <a href="index.html" class="news-link">Volver al inicio</a></p>
+    </div>
+
+    <div class="wrap producto-relacionados" id="relacionadosWrap" hidden>
+      <div class="section-head">
+        <div class="section-eyebrow">También te puede interesar</div>
+        <h2 class="section-title">Productos relacionados</h2>
+      </div>
+      <div class="products-grid" id="relacionadosGrid"></div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Patty's Store</h3>
+        <p>Maquillaje, ropa y accesorios seleccionados con cariño para realzar tu estilo único. Envíos a todo Honduras.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="maquillaje.html">Maquillaje</a></li>
+          <li><a href="ropa.html">Ropa</a></li>
+          <li><a href="accesorios.html">Accesorios</a></li>
+          <li><a href="skincare.html">Skincare</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="ofertas.html">Ofertas</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Patty's Store. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/productos-maquillaje.js"></script>
+<script src="js/productos-ropa.js"></script>
+<script src="js/productos-accesorios.js"></script>
+<script src="js/productos-skincare.js"></script>
+<script src="js/mainProducto.js"></script>
+</body>
+</html>
