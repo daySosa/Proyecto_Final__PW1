@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initHeroCarousel();
   initHeaderShadow();
   initSearch();
+  initAddToCart();
+  updateCartBadge();
 });
 
 /* ---------- Menú móvil ---------- */
@@ -74,8 +76,12 @@ function initHeaderShadow() {
   });
 }
 
-/* ---------- Carrusel del hero (3 imágenes con transición) ---------- */
+/* ---------- Carrusel del hero (3 imágenes con transición) ----------
+   Mejora: ahora se pausa el autoplay cuando el mouse está encima
+   (igual que se comenta en el patrón de "onProcess" del Carusel visto en clase,
+   evita que la imagen cambie mientras el usuario la está mirando) */
 function initHeroCarousel() {
+  var slider = document.getElementById("heroSlider");
   var slides = document.querySelectorAll("#heroSlider .hero-slide");
   var dots = document.querySelectorAll("#heroDots .dot");
   if (!slides.length || !dots.length) return;
@@ -118,6 +124,12 @@ function initHeroCarousel() {
     });
   });
 
+  // Pausa al pasar el mouse, reanuda al salir
+  if (slider) {
+    slider.addEventListener("mouseenter", stopAutoplay);
+    slider.addEventListener("mouseleave", startAutoplay);
+  }
+
   startAutoplay();
 }
 
@@ -152,6 +164,56 @@ function initNewsletterForm() {
 function isValidEmail(value) {
   var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return pattern.test(value);
+}
+
+/* =========================================================
+   CARRITO
+   Usa localStorage para persistir el carrito entre páginas,
+   sin necesidad de backend. La clave usada es "pattysCart".
+   ========================================================= */
+function initAddToCart() {
+  var buttons = document.querySelectorAll(".add-btn");
+  if (!buttons.length) return;
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      var cart = getCart();
+      cart.push({
+        name: btn.dataset.product || "Producto",
+        price: btn.dataset.price || "0"
+      });
+      saveCart(cart);
+      updateCartBadge();
+
+      var originalText = btn.textContent;
+      btn.textContent = "✓";
+      setTimeout(function () {
+        btn.textContent = originalText;
+      }, 900);
+    });
+  });
+}
+
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem("pattysCart")) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem("pattysCart", JSON.stringify(cart));
+}
+
+function updateCartBadge() {
+  var badge = document.getElementById("cartBadge");
+  if (!badge) return;
+  var cart = getCart();
+  badge.textContent = cart.length;
 }
 
 /* =========================================================
@@ -195,12 +257,10 @@ function initSearch() {
 
   closeBtn.addEventListener("click", closeSearch);
 
-  // Cierra el buscador al hacer clic fuera del cuadro
   overlay.addEventListener("click", function (event) {
     if (event.target === overlay) closeSearch();
   });
 
-  // Cierra con la tecla Escape
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && overlay.classList.contains("open")) {
       closeSearch();
@@ -258,7 +318,6 @@ function initSearch() {
     }, 200);
   }
 
-  // Construye la lista de cosas buscables a partir del DOM actual
   function buildSearchIndex() {
     var items = [];
 
@@ -299,27 +358,26 @@ function initSearch() {
       });
     });
 
-    document.querySelectorAll(".news-card").forEach(function (card, i) {
-      var title = card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "Noticia";
-      var desc = card.querySelector("p") ? card.querySelector("p").textContent.trim() : "";
+    document.querySelectorAll(".brand-card").forEach(function (card, i) {
+      var name = card.querySelector(".brand-name") ? card.querySelector(".brand-name").textContent.trim() : "Marca";
+      var tag = card.querySelector(".brand-tag") ? card.querySelector(".brand-tag").textContent.trim() : "";
 
-      if (!card.id) card.id = "search-news-" + i;
+      if (!card.id) card.id = "search-brand-" + i;
 
       items.push({
-        title: title,
-        tag: "Noticias y eventos",
+        title: name,
+        tag: "Marca · " + tag,
         price: "",
         image: "",
         el: card,
         targetId: card.id,
-        searchText: normalize(title + " " + desc)
+        searchText: normalize(name + " " + tag)
       });
     });
 
     return items;
   }
 
-  // Quita acentos y pasa a minúsculas para que "bolso" encuentre "Bolsos"
   function normalize(text) {
     return text
       .toLowerCase()
@@ -333,7 +391,6 @@ function initSearch() {
     return div.innerHTML;
   }
 
-  // Resalta la parte del título que coincide con la búsqueda
   function highlight(title, query) {
     var safeTitle = escapeHtml(title);
     var safeQuery = escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
