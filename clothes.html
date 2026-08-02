@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ropa — Patty's Store</title>
+    <meta name="description"
+        content="Catálogo de ropa de Patty's Store: prendas para mujer, hombre, niñas, niños y calzado para toda ocasión.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/Clothes_Style.css">
+</head>
+
+<body>
+
+    <header id="siteHeader">
+        <div class="wrap nav-bar">
+            <a href="HomePage.html" class="logo">Patty<span>'s</span> Store</a>
+
+            <div class="nav-right">
+                <nav class="nav-links" aria-label="Navegación principal">
+                    <a href="HomePage.html">Inicio</a>
+                    <a href="makeup.html">Maquillaje</a>
+                    <a href="clothes.html" aria-current="page">Ropa</a>
+                    <a href="accesorios.html">Accesorios</a>
+                    <a href="skincare.html">Skincare</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog"
+                        aria-expanded="false">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <a href="carrito.html" class="icon-btn cart-icon" aria-label="Ver carrito de compras">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+
+                    <div class="nav-more" id="navMore">
+                        <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
+                            <span class="more-bars"><span></span><span></span><span></span></span>
+                            Más
+                        </button>
+
+                        <div class="more-menu" id="moreMenu" role="menu">
+                            <a href="HomePage.html#mision" role="menuitem">Nuestra Misión</a>
+                            <a href="HomePage.html#marcas" role="menuitem">Nuestras Marcas</a>
+                            <a href="ofertas.html" role="menuitem">Ofertas</a>
+                            <a href="HomePage.html#nosotros" role="menuitem">Nosotras</a>
+                            <a href="contacto.html" role="menuitem">Contacto</a>
+                        </div>
+                    </div>
+
+                    <a href="ofertas.html" class="cta-btn buy-cta">Ver ofertas</a>
+                </div>
+
+                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+            <a href="HomePage.html">Inicio</a>
+            <a href="makeup.html">Maquillaje</a>
+            <a href="clothes.html">Ropa</a>
+            <a href="accessories.html">Accesorios</a>
+            <a href="skincare.html">Skincare</a>
+            <a href="ofertas.html">Ofertas</a>
+            <a href="HomePage.html#mision">Nuestra Misión</a>
+            <a href="HomePage.html#marcas">Nuestras Marcas</a>
+            <a href="HomePage.html#nosotros">Nosotras</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="carrito.html">Carrito</a>
+            <div class="mobile-cta">
+                <a href="ofertas.html" class="cta-btn" style="display:block;text-align:center;">Ver ofertas</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar en Patty's Store">
+        <div class="search-box">
+            <div class="search-input-wrap">
+                <span class="search-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" id="searchInput" placeholder="Busca vestidos, camisas, zapatos, chaquetas..."
+                    autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios, cuidado personal y
+                    novedades.</p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <section class="blog-hero">
+            <div class="wrap">
+                <div class="hero-eyebrow">Catálogo Ropa</div>
+                <h1 class="section-title-left">Prendas <span class="swipe">para toda la familia</span></h1>
+                <p class="blog-hero-text">Ropa para mujer, hombre, niñas y niños, además de calzado seleccionado para
+                    cada ocasión. Nuevas piezas cada temporada.</p>
+            </div>
+        </section>
+
+        <section class="blog-filters-section">
+            <div class="wrap">
+                <div class="blog-filters" id="ropaFilters" role="tablist" aria-label="Filtrar por tipo de producto">
+                    <button class="filter-chip active" data-filter="todos" role="tab"
+                        aria-selected="true">Todos</button>
+                    <button class="filter-chip" data-filter="mujer" role="tab" aria-selected="false">Mujer</button>
+                    <button class="filter-chip" data-filter="hombre" role="tab" aria-selected="false">Hombre</button>
+                    <button class="filter-chip" data-filter="ninas" role="tab" aria-selected="false">Niñas</button>
+                    <button class="filter-chip" data-filter="ninos" role="tab" aria-selected="false">Niños</button>
+                    <button class="filter-chip" data-filter="zapatos" role="tab" aria-selected="false">Zapatos</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section products-section" id="productos-ropa">
+            <div class="wrap">
+                <div class="products-glow"></div>
+                <div class="products-grid" id="ropaGrid">
+
+                    <!-- MUJER -->
+                    <div class="product-card" data-category="mujer">
+                        <a class="product-link" href="producto.html?id=vestido-floral-verano">
+                            <div class="product-img"><img src="images/ropa-vestido-floral.jpeg"
+                                    alt="Vestido floral de verano"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Mujer</span>
+                                <h4>Vestido Floral Verano</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 550</strong>
+                            <button class="add-btn" type="button" data-product="Vestido Floral Verano" data-price="550"
+                                aria-label="Agregar Vestido Floral Verano al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="mujer">
+                        <a class="product-link" href="producto.html?id=blusa-satinada-rosa">
+                            <div class="product-img"><img src="images/ropa-blusa-satinada.jpeg"
+                                    alt="Blusa satinada rosa"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Mujer</span>
+                                <h4>Blusa Satinada Rosa</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 320</strong>
+                            <button class="add-btn" type="button" data-product="Blusa Satinada Rosa" data-price="320"
+                                aria-label="Agregar Blusa Satinada Rosa al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="mujer">
+                        <a class="product-link" href="producto.html?id=pantalon-palazzo">
+                            <div class="product-img"><img src="images/ropa-pantalon-palazzo.jpeg"
+                                    alt="Pantalón palazzo ligero"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Mujer</span>
+                                <h4>Pantalón Palazzo Ligero</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 480</strong>
+                            <button class="add-btn" type="button" data-product="Pantalón Palazzo Ligero"
+                                data-price="480" aria-label="Agregar Pantalón Palazzo al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="mujer">
+                        <a class="product-link" href="producto.html?id=falda-midi-plisada">
+                            <div class="product-img"><img src="images/ropa-falda-midi.jpeg" alt="Falda midi plisada">
+                            </div>
+                            <div class="product-info">
+                                <span class="product-tag">Mujer</span>
+                                <h4>Falda Midi Plisada</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 420</strong>
+                            <button class="add-btn" type="button" data-product="Falda Midi Plisada" data-price="420"
+                                aria-label="Agregar Falda Midi Plisada al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="mujer">
+                        <a class="product-link" href="producto.html?id=chaqueta-denim-mujer">
+                            <div class="product-img"><img src="images/ropa-chaqueta-denim-mujer.jpeg"
+                                    alt="Chaqueta denim para mujer"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Mujer</span>
+                                <h4>Chaqueta Denim Mujer</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 590</strong>
+                            <button class="add-btn" type="button" data-product="Chaqueta Denim Mujer" data-price="590"
+                                aria-label="Agregar Chaqueta Denim Mujer al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <!-- HOMBRE -->
+                    <div class="product-card" data-category="hombre">
+                        <a class="product-link" href="producto.html?id=camisa-casual-lino">
+                            <div class="product-img"><img src="images/ropa-camisa-lino.jpeg"
+                                    alt="Camisa casual de lino"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Hombre</span>
+                                <h4>Camisa Casual Lino</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 380</strong>
+                            <button class="add-btn" type="button" data-product="Camisa Casual Lino" data-price="380"
+                                aria-label="Agregar Camisa Casual Lino al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="hombre">
+                        <a class="product-link" href="producto.html?id=pantalon-chino-slim">
+                            <div class="product-img"><img src="images/ropa-pantalon-chino.jpeg"
+                                    alt="Pantalón chino slim"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Hombre</span>
+                                <h4>Pantalón Chino Slim</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 450</strong>
+                            <button class="add-btn" type="button" data-product="Pantalón Chino Slim" data-price="450"
+                                aria-label="Agregar Pantalón Chino Slim al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="hombre">
+                        <a class="product-link" href="producto.html?id=polo-algodon-premium">
+                            <div class="product-img"><img src="images/ropa-polo-algodon.jpeg"
+                                    alt="Polo de algodón premium"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Hombre</span>
+                                <h4>Polo Algodón Premium</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 290</strong>
+                            <button class="add-btn" type="button" data-product="Polo Algodón Premium" data-price="290"
+                                aria-label="Agregar Polo Algodón Premium al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="hombre">
+                        <a class="product-link" href="producto.html?id=chaqueta-bomber">
+                            <div class="product-img"><img src="images/ropa-chaqueta-bomber.jpeg"
+                                    alt="Chaqueta ligera bomber"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Hombre</span>
+                                <h4>Chaqueta Ligera Bomber</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 650</strong>
+                            <button class="add-btn" type="button" data-product="Chaqueta Ligera Bomber" data-price="650"
+                                aria-label="Agregar Chaqueta Bomber al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="hombre">
+                        <a class="product-link" href="producto.html?id=jeans-slim-hombre">
+                            <div class="product-img"><img src="images/ropa-jeans-hombre.jpeg"
+                                    alt="Jeans slim fit para hombre"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Hombre</span>
+                                <h4>Jeans Slim Fit Hombre</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 520</strong>
+                            <button class="add-btn" type="button" data-product="Jeans Slim Fit Hombre" data-price="520"
+                                aria-label="Agregar Jeans Slim Fit al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <!-- NIÑAS -->
+                    <div class="product-card" data-category="ninas">
+                        <a class="product-link" href="producto.html?id=vestido-unicornio">
+                            <div class="product-img"><img src="images/ropa-vestido-unicornio.jpeg"
+                                    alt="Vestido infantil de unicornio"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niñas</span>
+                                <h4>Vestido Infantil Unicornio</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 280</strong>
+                            <button class="add-btn" type="button" data-product="Vestido Infantil Unicornio"
+                                data-price="280" aria-label="Agregar Vestido Unicornio al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninas">
+                        <a class="product-link" href="producto.html?id=conjunto-falda-blusa">
+                            <div class="product-img"><img src="images/ropa-conjunto-falda-blusa.jpeg"
+                                    alt="Conjunto de falda y blusa para niña"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niñas</span>
+                                <h4>Conjunto Falda y Blusa</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 260</strong>
+                            <button class="add-btn" type="button" data-product="Conjunto Falda y Blusa" data-price="260"
+                                aria-label="Agregar Conjunto Falda y Blusa al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninas">
+                        <a class="product-link" href="producto.html?id=legging-estampado-nina">
+                            <div class="product-img"><img src="images/ropa-legging-estampado.jpeg"
+                                    alt="Legging estampado para niña"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niñas</span>
+                                <h4>Legging Estampado Niña</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 190</strong>
+                            <button class="add-btn" type="button" data-product="Legging Estampado Niña" data-price="190"
+                                aria-label="Agregar Legging Estampado al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninas">
+                        <a class="product-link" href="producto.html?id=sueter-tejido-nina">
+                            <div class="product-img"><img src="images/ropa-sueter-nina.jpeg"
+                                    alt="Suéter tejido para niña"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niñas</span>
+                                <h4>Suéter Tejido Niña</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 310</strong>
+                            <button class="add-btn" type="button" data-product="Suéter Tejido Niña" data-price="310"
+                                aria-label="Agregar Suéter Tejido al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninas">
+                        <a class="product-link" href="producto.html?id=chaqueta-impermeable-nina">
+                            <div class="product-img"><img src="images/ropa-chaqueta-impermeable-nina.jpeg"
+                                    alt="Chaqueta impermeable para niña"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niñas</span>
+                                <h4>Chaqueta Impermeable Niña</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 340</strong>
+                            <button class="add-btn" type="button" data-product="Chaqueta Impermeable Niña"
+                                data-price="340" aria-label="Agregar Chaqueta Impermeable al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <!-- NIÑOS -->
+                    <div class="product-card" data-category="ninos">
+                        <a class="product-link" href="producto.html?id=camisa-cuadros-nino">
+                            <div class="product-img"><img src="images/ropa-camisa-cuadros-nino.jpeg"
+                                    alt="Camisa a cuadros para niño"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niños</span>
+                                <h4>Camisa Cuadros Niño</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 250</strong>
+                            <button class="add-btn" type="button" data-product="Camisa Cuadros Niño" data-price="250"
+                                aria-label="Agregar Camisa Cuadros al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninos">
+                        <a class="product-link" href="producto.html?id=short-deportivo-nino">
+                            <div class="product-img"><img src="images/ropa-short-deportivo-nino.jpeg"
+                                    alt="Short deportivo para niño"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niños</span>
+                                <h4>Short Deportivo Niño</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 180</strong>
+                            <button class="add-btn" type="button" data-product="Short Deportivo Niño" data-price="180"
+                                aria-label="Agregar Short Deportivo al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninos">
+                        <a class="product-link" href="producto.html?id=conjunto-playera-short">
+                            <div class="product-img"><img src="images/ropa-conjunto-playera-short.jpeg"
+                                    alt="Conjunto de playera y short para niño"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niños</span>
+                                <h4>Conjunto Playera y Short</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 270</strong>
+                            <button class="add-btn" type="button" data-product="Conjunto Playera y Short"
+                                data-price="270" aria-label="Agregar Conjunto Playera y Short al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninos">
+                        <a class="product-link" href="producto.html?id=sudadera-capucha-nino">
+                            <div class="product-img"><img src="images/ropa-sudadera-nino.jpeg"
+                                    alt="Sudadera con capucha para niño"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niños</span>
+                                <h4>Sudadera con Capucha Niño</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 320</strong>
+                            <button class="add-btn" type="button" data-product="Sudadera con Capucha Niño"
+                                data-price="320" aria-label="Agregar Sudadera con Capucha al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="ninos">
+                        <a class="product-link" href="producto.html?id=pantalon-cargo-nino">
+                            <div class="product-img"><img src="images/ropa-pantalon-cargo-nino.jpeg"
+                                    alt="Pantalón cargo para niño"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Niños</span>
+                                <h4>Pantalón Cargo Niño</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 290</strong>
+                            <button class="add-btn" type="button" data-product="Pantalón Cargo Niño" data-price="290"
+                                aria-label="Agregar Pantalón Cargo al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <!-- ZAPATOS -->
+                    <div class="product-card" data-category="zapatos">
+                        <a class="product-link" href="producto.html?id=tenis-casuales-unisex">
+                            <div class="product-img"><img src="images/ropa-tenis-casuales.jpeg"
+                                    alt="Tenis casuales unisex"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Zapatos</span>
+                                <h4>Tenis Casuales Unisex</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 550</strong>
+                            <button class="add-btn" type="button" data-product="Tenis Casuales Unisex" data-price="550"
+                                aria-label="Agregar Tenis Casuales al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="zapatos">
+                        <a class="product-link" href="producto.html?id=sandalias-plataforma">
+                            <div class="product-img"><img src="images/ropa-sandalias-plataforma.jpeg"
+                                    alt="Sandalias de plataforma"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Zapatos</span>
+                                <h4>Sandalias de Plataforma</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 380</strong>
+                            <button class="add-btn" type="button" data-product="Sandalias de Plataforma"
+                                data-price="380" aria-label="Agregar Sandalias de Plataforma al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="zapatos">
+                        <a class="product-link" href="producto.html?id=zapatos-formales-hombre">
+                            <div class="product-img"><img src="images/ropa-zapatos-formales.jpeg"
+                                    alt="Zapatos formales para hombre"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Zapatos</span>
+                                <h4>Zapatos Formales Hombre</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 620</strong>
+                            <button class="add-btn" type="button" data-product="Zapatos Formales Hombre"
+                                data-price="620" aria-label="Agregar Zapatos Formales al carrito">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="zapatos">
+                        <a class="product-link" href="producto.html?id=botines-ante-mujer">
+                            <div class="product-img"><img src="images/ropa-botines-ante.jpeg"
+                                    alt="Botines de ante para mujer"></div>
+                            <div class="product-info">
+                                <span class="product-tag">Zapatos</span>
+                                <h4>Botines Mujer Ante</h4>
+                            </div>
+                        </a>
+                        <div class="product-price">
+                            <strong>L. 590</strong>
+                            <button class="add-btn" type="button" data-product="Botines Mujer Ante" data-price="590"
+                                aria-label="Agregar Botines Mujer al carrito">+</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="blog-empty" id="ropaEmpty" hidden>No hay productos en esta categoría todavía.</p>
+
+                <nav class="pagination" id="ropaPagination" aria-label="Paginación del catálogo"></nav>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter-ropa">
+            <div class="newsletter-glow"></div>
+            <div class="wrap">
+                <h2>Sé la primera en enterarte</h2>
+                <p>Suscríbete y recibe ofertas exclusivas de ropa y moda directo a tu correo.</p>
+                <form class="newsletter-form" id="newsletterForm" novalidate>
+                    <div class="form-field">
+                        <input type="email" id="newsletterEmail" name="email" placeholder="Tu correo electrónico"
+                            required>
+                        <span class="field-error" id="newsletterError"></span>
+                    </div>
+                    <button type="submit">Suscribirme</button>
+                </form>
+                <p class="form-success" id="newsletterSuccess" role="status"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <h3>Patty's Store</h3>
+                    <p>Maquillaje, ropa y accesorios seleccionados con cariño para realzar tu estilo único. Envíos a
+                        todo Honduras.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Tienda</h4>
+                    <ul>
+                        <li><a href="maquillaje.html">Maquillaje</a></li>
+                        <li><a href="ropa.html">Ropa</a></li>
+                        <li><a href="accesorios.html">Accesorios</a></li>
+                        <li><a href="skincare.html">Skincare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="HomePage.html#marcas">Nuestras marcas</a></li>
+                        <li><a href="HomePage.html#mision">Nuestra misión</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </li>
+                        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        </li>
+                        <li><a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="year"></span> Patty's Store. Todos los derechos reservados.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/mainClothes.js"></script>
+</body>
+
+</html>
