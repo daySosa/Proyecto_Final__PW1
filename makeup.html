@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maquillaje — Patty's Store | Belleza y color</title>
+<meta name="description" content="Catálogo de maquillaje de Patty's Store: labiales, bases, sombras, rubores, cejas y brochas de las mejores marcas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-bar">
+    <a href="HomePage.html" class="logo">Patty<span>'s</span> Store</a>
+
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="HomePage.html">Inicio</a>
+        <a href="makeup.html" aria-current="page">Maquillaje</a>
+        <a href="Pagina_Skincare.html">Skincare</a>
+        <a href="HomePage.html#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+
+        <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" onclick="location.href='carrito.html'">
+          &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
+        </button>
+
+        <div class="nav-more" id="navMore">
+          <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="more-bars"><span></span><span></span><span></span></span>
+            Más
+          </button>
+          <div class="more-menu" id="moreMenu" role="menu">
+            <a href="HomePage.html#mision" role="menuitem">Nuestra Misión</a>
+          </div>
+        </div>
+
+        <a href="HomePage.html#productos" class="cta-btn ghost cat-cta">Ver catálogo</a>
+        <a href="carrito.html" class="cta-btn buy-cta">Ver carrito</a>
+      </div>
+    </div>
+
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+    <a href="HomePage.html">Inicio</a>
+    <a href="Pagina_Maquillaje.html">Maquillaje</a>
+    <a href="Pagina_Skincare.html">Skincare</a>
+    <a href="HomePage.html#contacto">Contacto</a>
+    <div class="mobile-cta">
+      <a href="HomePage.html#productos" class="cta-btn ghost" style="display:block;text-align:center;margin-bottom:10px;">Ver catálogo</a>
+      <a href="carrito.html" class="cta-btn" style="display:block;text-align:center;">Ver carrito (<span id="cartCountMobile">0</span>)</a>
+    </div>
+  </nav>
+</header>
+
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar en Patty's Store">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Busca labiales, bases, sombras, brochas..." autocomplete="off">
+      <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios, cuidado personal y novedades.</p>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section class="blog-hero">
+    <div class="wrap">
+      <div class="hero-eyebrow">Catálogo Maquillaje</div>
+      <h1 class="section-title-left">Color y belleza para cada look</h1>
+      <p class="blog-hero-text">Labiales, bases, sombras, rubores, cejas y brochas seleccionados para realzar tu estilo. Nuevos productos cada temporada.</p>
+    </div>
+  </section>
+
+  <section class="blog-filters-section">
+    <div class="wrap">
+      <div class="blog-filters" id="maquillajeFilters" role="tablist" aria-label="Filtrar por tipo de producto">
+        <button class="filter-chip active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
+        <button class="filter-chip" data-filter="labios" role="tab" aria-selected="false">Labios</button>
+        <button class="filter-chip" data-filter="rostro" role="tab" aria-selected="false">Rostro</button>
+        <button class="filter-chip" data-filter="ojos" role="tab" aria-selected="false">Ojos</button>
+        <button class="filter-chip" data-filter="cejas" role="tab" aria-selected="false">Cejas</button>
+        <button class="filter-chip" data-filter="rubor" role="tab" aria-selected="false">Rubor</button>
+        <button class="filter-chip" data-filter="brochas" role="tab" aria-selected="false">Brochas</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section products-section" id="productos-maquillaje">
+    <div class="wrap">
+      <div class="products-grid" id="maquillajeGrid">
+
+        <!-- LABIOS -->
+        <article class="product-card" data-category="labios">
+          <a href="producto.html?id=labial-mate">
+            <div class="product-img"><img src="imagenes/maquillaje-labial-mate.jpeg" alt="Labial mate larga duración"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Labios</span>
+            <h4>Labial Mate Larga Duración</h4>
+            <div class="product-price">
+              <strong>L. 180</strong>
+              <button class="add-btn cart-add-btn" data-id="labial-mate" data-name="Labial Mate Larga Duración" data-price="180" data-img="imagenes/maquillaje-labial-mate.jpeg" aria-label="Agregar Labial Mate al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="labios">
+          <a href="producto.html?id=gloss-labial">
+            <div class="product-img"><img src="imagenes/maquillaje-gloss-labial.jpeg" alt="Gloss labial brillante"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Labios</span>
+            <h4>Gloss Labial Brillante</h4>
+            <div class="product-price">
+              <strong>L. 150</strong>
+              <button class="add-btn cart-add-btn" data-id="gloss-labial" data-name="Gloss Labial Brillante" data-price="150" data-img="imagenes/maquillaje-gloss-labial.jpeg" aria-label="Agregar Gloss Labial al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="labios">
+          <a href="producto.html?id=delineador-labios">
+            <div class="product-img"><img src="imagenes/maquillaje-delineador-labios.jpeg" alt="Delineador de labios"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Labios</span>
+            <h4>Delineador de Labios</h4>
+            <div class="product-price">
+              <strong>L. 90</strong>
+              <button class="add-btn cart-add-btn" data-id="delineador-labios" data-name="Delineador de Labios" data-price="90" data-img="imagenes/maquillaje-delineador-labios.jpeg" aria-label="Agregar Delineador de Labios al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="labios">
+          <a href="producto.html?id=balsamo-tintado">
+            <div class="product-img"><img src="imagenes/maquillaje-balsamo-tintado.jpeg" alt="Bálsamo labial tintado"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Labios</span>
+            <h4>Bálsamo Labial Tintado</h4>
+            <div class="product-price">
+              <strong>L. 130</strong>
+              <button class="add-btn cart-add-btn" data-id="balsamo-tintado" data-name="Bálsamo Labial Tintado" data-price="130" data-img="imagenes/maquillaje-balsamo-tintado.jpeg" aria-label="Agregar Bálsamo Labial Tintado al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROSTRO -->
+        <article class="product-card" data-category="rostro">
+          <a href="producto.html?id=base-liquida">
+            <div class="product-img"><img src="imagenes/maquillaje-base-liquida.jpeg" alt="Base líquida cobertura media"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rostro</span>
+            <h4>Base Líquida Cobertura Media</h4>
+            <div class="product-price">
+              <strong>L. 320</strong>
+              <button class="add-btn cart-add-btn" data-id="base-liquida" data-name="Base Líquida Cobertura Media" data-price="320" data-img="imagenes/maquillaje-base-liquida.jpeg" aria-label="Agregar Base Líquida al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="rostro">
+          <a href="producto.html?id=corrector-liquido">
+            <div class="product-img"><img src="imagenes/maquillaje-corrector-liquido.jpeg" alt="Corrector líquido"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rostro</span>
+            <h4>Corrector Líquido</h4>
+            <div class="product-price">
+              <strong>L. 210</strong>
+              <button class="add-btn cart-add-btn" data-id="corrector-liquido" data-name="Corrector Líquido" data-price="210" data-img="imagenes/maquillaje-corrector-liquido.jpeg" aria-label="Agregar Corrector Líquido al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="rostro">
+          <a href="producto.html?id=polvo-compacto">
+            <div class="product-img"><img src="imagenes/maquillaje-polvo-compacto.jpeg" alt="Polvo compacto matificante"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rostro</span>
+            <h4>Polvo Compacto Matificante</h4>
+            <div class="product-price">
+              <strong>L. 250</strong>
+              <button class="add-btn cart-add-btn" data-id="polvo-compacto" data-name="Polvo Compacto Matificante" data-price="250" data-img="imagenes/maquillaje-polvo-compacto.jpeg" aria-label="Agregar Polvo Compacto al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="rostro">
+          <a href="producto.html?id=contorno-crema">
+            <div class="product-img"><img src="imagenes/maquillaje-contorno-crema.jpeg" alt="Contorno en crema"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rostro</span>
+            <h4>Contorno en Crema</h4>
+            <div class="product-price">
+              <strong>L. 280</strong>
+              <button class="add-btn cart-add-btn" data-id="contorno-crema" data-name="Contorno en Crema" data-price="280" data-img="imagenes/maquillaje-contorno-crema.jpeg" aria-label="Agregar Contorno en Crema al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- OJOS -->
+        <article class="product-card" data-category="ojos">
+          <a href="producto.html?id=paleta-sombras">
+            <div class="product-img"><img src="imagenes/maquillaje-paleta-sombras.jpeg" alt="Paleta de sombras 12 tonos"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Ojos</span>
+            <h4>Paleta de Sombras 12 Tonos</h4>
+            <div class="product-price">
+              <strong>L. 380</strong>
+              <button class="add-btn cart-add-btn" data-id="paleta-sombras" data-name="Paleta de Sombras 12 Tonos" data-price="380" data-img="imagenes/maquillaje-paleta-sombras.jpeg" aria-label="Agregar Paleta de Sombras al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="ojos">
+          <a href="producto.html?id=delineador-liquido">
+            <div class="product-img"><img src="imagenes/maquillaje-delineador-liquido.jpeg" alt="Delineador líquido waterproof"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Ojos</span>
+            <h4>Delineador Líquido Waterproof</h4>
+            <div class="product-price">
+              <strong>L. 160</strong>
+              <button class="add-btn cart-add-btn" data-id="delineador-liquido" data-name="Delineador Líquido Waterproof" data-price="160" data-img="imagenes/maquillaje-delineador-liquido.jpeg" aria-label="Agregar Delineador Líquido al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="ojos">
+          <a href="producto.html?id=mascara-pestanas">
+            <div class="product-img"><img src="imagenes/maquillaje-mascara-pestanas.jpeg" alt="Máscara de pestañas volumen"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Ojos</span>
+            <h4>Máscara de Pestañas Volumen</h4>
+            <div class="product-price">
+              <strong>L. 220</strong>
+              <button class="add-btn cart-add-btn" data-id="mascara-pestanas" data-name="Máscara de Pestañas Volumen" data-price="220" data-img="imagenes/maquillaje-mascara-pestanas.jpeg" aria-label="Agregar Máscara de Pestañas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="ojos">
+          <a href="producto.html?id=pestanas-postizas">
+            <div class="product-img"><img src="imagenes/maquillaje-pestanas-postizas.jpeg" alt="Pestañas postizas naturales"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Ojos</span>
+            <h4>Pestañas Postizas Naturales</h4>
+            <div class="product-price">
+              <strong>L. 140</strong>
+              <button class="add-btn cart-add-btn" data-id="pestanas-postizas" data-name="Pestañas Postizas Naturales" data-price="140" data-img="imagenes/maquillaje-pestanas-postizas.jpeg" aria-label="Agregar Pestañas Postizas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CEJAS -->
+        <article class="product-card" data-category="cejas">
+          <a href="producto.html?id=lapiz-cejas">
+            <div class="product-img"><img src="imagenes/maquillaje-lapiz-cejas.jpeg" alt="Lápiz para cejas"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Cejas</span>
+            <h4>Lápiz para Cejas</h4>
+            <div class="product-price">
+              <strong>L. 120</strong>
+              <button class="add-btn cart-add-btn" data-id="lapiz-cejas" data-name="Lápiz para Cejas" data-price="120" data-img="imagenes/maquillaje-lapiz-cejas.jpeg" aria-label="Agregar Lápiz para Cejas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="cejas">
+          <a href="producto.html?id=gel-cejas">
+            <div class="product-img"><img src="imagenes/maquillaje-gel-cejas.jpeg" alt="Gel fijador de cejas"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Cejas</span>
+            <h4>Gel Fijador de Cejas</h4>
+            <div class="product-price">
+              <strong>L. 110</strong>
+              <button class="add-btn cart-add-btn" data-id="gel-cejas" data-name="Gel Fijador de Cejas" data-price="110" data-img="imagenes/maquillaje-gel-cejas.jpeg" aria-label="Agregar Gel Fijador de Cejas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="cejas">
+          <a href="producto.html?id=polvo-cejas">
+            <div class="product-img"><img src="imagenes/maquillaje-polvo-cejas.jpeg" alt="Polvo para cejas"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Cejas</span>
+            <h4>Polvo para Cejas</h4>
+            <div class="product-price">
+              <strong>L. 130</strong>
+              <button class="add-btn cart-add-btn" data-id="polvo-cejas" data-name="Polvo para Cejas" data-price="130" data-img="imagenes/maquillaje-polvo-cejas.jpeg" aria-label="Agregar Polvo para Cejas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="cejas">
+          <a href="producto.html?id=mascara-cejas">
+            <div class="product-img"><img src="imagenes/maquillaje-mascara-cejas.jpeg" alt="Máscara de cejas tintada"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Cejas</span>
+            <h4>Máscara de Cejas Tintada</h4>
+            <div class="product-price">
+              <strong>L. 150</strong>
+              <button class="add-btn cart-add-btn" data-id="mascara-cejas" data-name="Máscara de Cejas Tintada" data-price="150" data-img="imagenes/maquillaje-mascara-cejas.jpeg" aria-label="Agregar Máscara de Cejas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- RUBOR -->
+        <article class="product-card" data-category="rubor">
+          <a href="producto.html?id=rubor-polvo">
+            <div class="product-img"><img src="imagenes/maquillaje-rubor-polvo.jpeg" alt="Rubor en polvo duraznado"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rubor</span>
+            <h4>Rubor en Polvo Duraznado</h4>
+            <div class="product-price">
+              <strong>L. 190</strong>
+              <button class="add-btn cart-add-btn" data-id="rubor-polvo" data-name="Rubor en Polvo Duraznado" data-price="190" data-img="imagenes/maquillaje-rubor-polvo.jpeg" aria-label="Agregar Rubor en Polvo al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="rubor">
+          <a href="producto.html?id=bronzer">
+            <div class="product-img"><img src="imagenes/maquillaje-bronzer.jpeg" alt="Bronzer matificante"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rubor</span>
+            <h4>Bronzer Matificante</h4>
+            <div class="product-price">
+              <strong>L. 210</strong>
+              <button class="add-btn cart-add-btn" data-id="bronzer" data-name="Bronzer Matificante" data-price="210" data-img="imagenes/maquillaje-bronzer.jpeg" aria-label="Agregar Bronzer al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="rubor">
+          <a href="producto.html?id=iluminador-liquido">
+            <div class="product-img"><img src="imagenes/maquillaje-iluminador-liquido.jpeg" alt="Iluminador líquido"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rubor</span>
+            <h4>Iluminador Líquido</h4>
+            <div class="product-price">
+              <strong>L. 230</strong>
+              <button class="add-btn cart-add-btn" data-id="iluminador-liquido" data-name="Iluminador Líquido" data-price="230" data-img="imagenes/maquillaje-iluminador-liquido.jpeg" aria-label="Agregar Iluminador Líquido al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="rubor">
+          <a href="producto.html?id=rubor-liquido">
+            <div class="product-img"><img src="imagenes/maquillaje-rubor-liquido.jpeg" alt="Rubor líquido natural"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Rubor</span>
+            <h4>Rubor Líquido Natural</h4>
+            <div class="product-price">
+              <strong>L. 200</strong>
+              <button class="add-btn cart-add-btn" data-id="rubor-liquido" data-name="Rubor Líquido Natural" data-price="200" data-img="imagenes/maquillaje-rubor-liquido.jpeg" aria-label="Agregar Rubor Líquido al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- BROCHAS -->
+        <article class="product-card" data-category="brochas">
+          <a href="producto.html?id=set-brochas">
+            <div class="product-img"><img src="imagenes/maquillaje-set-brochas.jpeg" alt="Set de brochas profesionales 8 piezas"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Brochas</span>
+            <h4>Set de Brochas Profesionales (8 pzs)</h4>
+            <div class="product-price">
+              <strong>L. 450</strong>
+              <button class="add-btn cart-add-btn" data-id="set-brochas" data-name="Set de Brochas Profesionales" data-price="450" data-img="imagenes/maquillaje-set-brochas.jpeg" aria-label="Agregar Set de Brochas al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="brochas">
+          <a href="producto.html?id=beauty-blender">
+            <div class="product-img"><img src="imagenes/maquillaje-beauty-blender.jpeg" alt="Esponja beauty blender"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Brochas</span>
+            <h4>Esponja Beauty Blender</h4>
+            <div class="product-price">
+              <strong>L. 130</strong>
+              <button class="add-btn cart-add-btn" data-id="beauty-blender" data-name="Esponja Beauty Blender" data-price="130" data-img="imagenes/maquillaje-beauty-blender.jpeg" aria-label="Agregar Esponja Beauty Blender al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="brochas">
+          <a href="producto.html?id=brocha-base">
+            <div class="product-img"><img src="imagenes/maquillaje-brocha-base.jpeg" alt="Brocha para base"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Brochas</span>
+            <h4>Brocha para Base</h4>
+            <div class="product-price">
+              <strong>L. 140</strong>
+              <button class="add-btn cart-add-btn" data-id="brocha-base" data-name="Brocha para Base" data-price="140" data-img="imagenes/maquillaje-brocha-base.jpeg" aria-label="Agregar Brocha para Base al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="brochas">
+          <a href="producto.html?id=brocha-polvo">
+            <div class="product-img"><img src="imagenes/maquillaje-brocha-polvo.jpeg" alt="Brocha para polvo compacto"></div>
+          </a>
+          <div class="product-info">
+            <span class="product-tag">Brochas</span>
+            <h4>Brocha para Polvo Compacto</h4>
+            <div class="product-price">
+              <strong>L. 120</strong>
+              <button class="add-btn cart-add-btn" data-id="brocha-polvo" data-name="Brocha para Polvo Compacto" data-price="120" data-img="imagenes/maquillaje-brocha-polvo.jpeg" aria-label="Agregar Brocha para Polvo al carrito">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="blog-empty" id="maquillajeEmpty" hidden>No hay productos en esta categoría todavía.</p>
+
+      <nav class="pagination" id="maquillajePagination" aria-label="Paginación del catálogo"></nav>
+    </div>
+  </section>
+
+  <section class="newsletter" id="newsletter-maquillaje">
+    <div class="wrap">
+      <h2>Recibe tips de maquillaje cada semana</h2>
+      <p>Suscríbete y entérate primero de nuevos productos y tendencias de belleza.</p>
+      <form class="newsletter-form" id="newsletterFormMaquillaje" novalidate>
+        <div class="form-field">
+          <input type="email" id="newsletterEmailMaquillaje" name="email" placeholder="Tu correo electrónico" required>
+          <span class="field-error" id="newsletterErrorMaquillaje"></span>
+        </div>
+        <button type="submit">Suscribirme</button>
+      </form>
+      <p class="form-success" id="newsletterSuccessMaquillaje" role="status"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Patty's Store</h3>
+        <p>Maquillaje, ropa y accesorios seleccionados con cariño para realzar tu estilo único. Envíos a todo Honduras.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="Pagina_Maquillaje.html">Maquillaje</a></li>
+          <li><a href="HomePage.html#categorias">Ropa</a></li>
+          <li><a href="Pagina_Skincare.html">Skincare</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="HomePage.html#contacto">Contacto</a></li>
+          <li><a href="HomePage.html#mision">Nuestra misión</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Patty's Store. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/mainMaquillaje.js"></script>
+</body>
+</html>
