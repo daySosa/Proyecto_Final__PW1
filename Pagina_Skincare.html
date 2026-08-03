@@ -15,32 +15,37 @@
   <div class="wrap nav-bar">
     <a href="HomePage.html" class="logo">Patty<span>'s</span> Store</a>
 
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="HomePage.html">Inicio</a>
-      <a href="Pagina_Skincare.html" aria-current="page">Skincare</a>
-      <a href="HomePage.html#productos">Productos</a>
-      <a href="HomePage.html#contacto">Contacto</a>
-    </nav>
+    <div class="nav-right">
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="HomePage.html">Inicio</a>
+        <a href="maquillaje.html">Maquillaje</a>
+        <a href="ropa.html">Ropa</a>
+        <a href="accesorios.html">Accesorios</a>
+        <a href="Pagina_Skincare.html" aria-current="page">Skincare</a>
+      </nav>
 
-    <div class="nav-actions">
-      <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
 
-      <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" onclick="location.href='carrito.html'">
-        &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
-      </button>
-
-      <div class="nav-more" id="navMore">
-        <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
-          <span class="more-bars"><span></span><span></span><span></span></span>
-          Más
+        <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" onclick="location.href='carrito.html'">
+          &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
         </button>
-        <div class="more-menu" id="moreMenu" role="menu">
-          <a href="HomePage.html#mision" role="menuitem">Nuestra Misión</a>
-        </div>
-      </div>
 
-      <a href="HomePage.html#productos" class="cta-btn ghost cat-cta">Ver catálogo</a>
-      <a href="carrito.html" class="cta-btn buy-cta">Ver carrito</a>
+        <div class="nav-more" id="navMore">
+          <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
+            <span class="more-bars"><span></span><span></span><span></span></span>
+            Más
+          </button>
+          <div class="more-menu" id="moreMenu" role="menu">
+            <a href="HomePage.html#mision" role="menuitem">Nuestra Misión</a>
+            <a href="HomePage.html#marcas" role="menuitem">Nuestras Marcas</a>
+            <a href="HomePage.html#nosotros" role="menuitem">Nosotras</a>
+            <a href="contacto.html" role="menuitem">Contacto</a>
+          </div>
+        </div>
+
+        <a href="ofertas.html" class="cta-btn buy-cta">Ver ofertas</a>
+      </div>
 
       <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -50,12 +55,18 @@
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
     <a href="HomePage.html">Inicio</a>
+    <a href="maquillaje.html">Maquillaje</a>
+    <a href="ropa.html">Ropa</a>
+    <a href="accesorios.html">Accesorios</a>
     <a href="Pagina_Skincare.html">Skincare</a>
-    <a href="HomePage.html#productos">Productos</a>
-    <a href="HomePage.html#contacto">Contacto</a>
+    <a href="ofertas.html">Ofertas</a>
+    <a href="HomePage.html#mision">Nuestra Misión</a>
+    <a href="HomePage.html#marcas">Nuestras Marcas</a>
+    <a href="HomePage.html#nosotros">Nosotras</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="carrito.html">Carrito</a>
     <div class="mobile-cta">
-      <a href="HomePage.html#productos" class="cta-btn ghost" style="display:block;text-align:center;margin-bottom:10px;">Ver catálogo</a>
-      <a href="carrito.html" class="cta-btn" style="display:block;text-align:center;">Ver carrito (<span id="cartCountMobile">0</span>)</a>
+      <a href="ofertas.html" class="cta-btn" style="display:block;text-align:center;">Ver ofertas</a>
     </div>
   </nav>
 </header>
@@ -243,16 +254,19 @@
       <div class="footer-col">
         <h4>Tienda</h4>
         <ul>
-          <li><a href="HomePage.html#categorias">Maquillaje</a></li>
-          <li><a href="HomePage.html#categorias">Ropa</a></li>
+          <li><a href="maquillaje.html">Maquillaje</a></li>
+          <li><a href="ropa.html">Ropa</a></li>
+          <li><a href="accesorios.html">Accesorios</a></li>
           <li><a href="Pagina_Skincare.html">Skincare</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Ayuda</h4>
         <ul>
-          <li><a href="HomePage.html#contacto">Contacto</a></li>
+          <li><a href="ofertas.html">Ofertas</a></li>
+          <li><a href="HomePage.html#marcas">Nuestras marcas</a></li>
           <li><a href="HomePage.html#mision">Nuestra misión</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </div>
       <div class="footer-col">
