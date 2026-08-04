@@ -124,7 +124,6 @@ function initHeroCarousel() {
   startAutoplay();
 }
 
-
 function initNewsletterForm() {
   var form = document.getElementById("newsletterForm");
   if (!form) return;
