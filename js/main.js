@@ -72,7 +72,6 @@ function initHeaderShadow() {
   });
 }
 
-/* ---------- Carrusel del hero (3 imágenes con transición) ----------
 
 
 function initHeroCarousel() {
