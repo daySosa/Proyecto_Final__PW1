@@ -59,7 +59,6 @@ function setCurrentYear() {
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 }
 
-/* ---------- Sombra del header al hacer scroll ---------- */
 function initHeaderShadow() {
   var header = document.getElementById("siteHeader");
   if (!header) return;
