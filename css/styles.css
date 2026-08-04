@@ -1166,7 +1166,6 @@ header.scrolled {
   opacity: 0.65;
 }
 
-/* ---------- Newsletter ---------- */
 .newsletter {
   position: relative;
   background: linear-gradient(160deg, #4E0714 0%, #160306 100%);
