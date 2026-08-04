@@ -203,7 +203,7 @@ function updateCartBadge() {
 
 /* =========================================================
    BÚSQUEDA FUNCIONAL
-   El buscador arma su índice leyendo el propio HTML (tarjetas de
+
 
 
 
