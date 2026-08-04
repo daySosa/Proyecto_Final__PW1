@@ -972,8 +972,6 @@ header.scrolled {
   object-fit: cover;
 }
 
-/* AJUSTE: más espacio interno para que el precio y el botón "+"
-   no queden pegados a la orilla de la tarjeta */
 .product-info{
   padding:20px 28px 30px;
 }
