@@ -1338,7 +1338,6 @@ footer {
   opacity: 0.6;
 }
 
-/* ---------- Menú móvil ---------- */
 .mobile-menu {
   display: none;
   flex-direction: column;
