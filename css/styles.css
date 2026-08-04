@@ -859,7 +859,6 @@ header.scrolled {
   opacity:0.75;
 }
 
-/* ---------- Categorías ---------- */
 .categories {
   display: flex;
   flex-wrap: wrap;
