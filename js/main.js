@@ -116,7 +116,6 @@ function initHeroCarousel() {
     });
   });
 
-
   if (slider) {
     slider.addEventListener("mouseenter", stopAutoplay);
     slider.addEventListener("mouseleave", startAutoplay);
