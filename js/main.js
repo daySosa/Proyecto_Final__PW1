@@ -201,7 +201,6 @@ function updateCartBadge() {
   badge.textContent = cart.length;
 }
 
-
 function initSearch() {
   var trigger = document.getElementById("searchTrigger");
   var overlay = document.getElementById("searchOverlay");
