@@ -823,7 +823,6 @@ header.scrolled {
   padding-bottom: 2px;
 }
 
-/* ---------- Marcas ---------- */
 .brands-section{ background:linear-gradient(160deg, #E2B3C2 0%, #AC5B67 100%); }
 .brands-grid{
   display:flex;
