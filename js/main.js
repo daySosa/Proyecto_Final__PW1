@@ -202,7 +202,7 @@ function updateCartBadge() {
 }
 
 /* =========================================================
-   BÚSQUEDA FUNCIONAL
+
 
 
 
