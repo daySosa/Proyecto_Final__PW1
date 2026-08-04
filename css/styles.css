@@ -657,7 +657,6 @@ header.scrolled {
   box-shadow: 0 0 10px rgba(78, 7, 20, 0.5);
 }
 
-/* ---------- Marquee strip ---------- */
 .marquee {
   background: linear-gradient(90deg, #160306, #4E0714, #160306);
   color: #EFD4C4;
