@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Patty's Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/checkout.js"></script>
+
+</head>
+<body>
+
+<header>
+    <div class="wrap nav-bar">
+        <a href="index.html" class="logo">Patty's <span>Store</span></a>
+        
+        <div class="nav-right">
+            <nav class="nav-links" aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="productos.html">Productos</a>
+                <a href="blog.html">Blog</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="btnOpenSearch" aria-label="Buscar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <a href="carrito.html" class="icon-btn cart-btn" aria-label="Ver carrito">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cartBadgeCount">0</span>
+                </a>
+                <a href="productos.html" class="cta-btn ghost">Catálogo</a>
+            </div>
+        </div>
+
+        <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Contacto</a>
+        <div class="mobile-cta">
+            <a href="productos.html" class="cta-btn full-width">Ver catálogo</a>
+        </div>
+    </nav>
+</header>
+
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Búsqueda de productos">
+    <div class="search-box">
+        <div class="search-input-wrap">
+            <input type="search" id="searchInput" placeholder="¿Qué estás buscando?" aria-label="Buscar en la tienda">
+            <button class="search-close" id="btnCloseSearch" aria-label="Cerrar búsqueda">&times;</button>
+        </div>
+        <p class="search-hint">Escribe y presiona enter para buscar productos</p>
+    </div>
+</div>
+
+<main class="section">
+    <div class="wrap">
+        
+        <nav class="breadcrumb" aria-label="Miga de pan">
+            <a href="index.html">Inicio</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="carrito.html">Carrito</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <span class="current" aria-current="page">Checkout</span>
+        </nav>
+
+        <span class="section-eyebrow">FINALIZAR PEDIDO</span>
+        <h1 class="section-title mb-30">Proceso de Pago</h1>
+
+        <div class="carrito-wrap">
+
+            <section class="carrito-items" aria-label="Formulario de compra">
+                <form id="checkoutForm" action="#" method="post" class="checkout-form-grid">
+
+                    <fieldset class="carrito-item form-section">
+                        <legend class="form-section-title">1. Datos de Contacto y Envío</legend>
+                        
+                        <div class="form-row two-cols">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana García" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="correo">Correo Electrónico</label>
+                                <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="form-row two-cols">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="+504 9999-9999" required autocomplete="tel" inputmode="tel">
+                            </div>
+                            <div class="form-group">
+                                <label for="departamento">Departamento</label>
+                                <select id="departamento" name="departamento" required autocomplete="address-level1">
+                                    <option value="" disabled selected>Seleccionar departamento</option>
+                                    <option value="Francisco Morazán">Francisco Morazán</option>
+                                    <option value="Cortés">Cortés</option>
+                                    <option value="Atlántida">Atlántida</option>
+                                    <option value="Choluteca">Choluteca</option>
+                                    <option value="Comayagua">Comayagua</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="direccion">Dirección Exacta</label>
+                            <textarea id="direccion" name="direccion" rows="3" placeholder="Colonia, calle, número de casa o referencia..." required autocomplete="street-address"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="carrito-item form-section">
+                        <legend class="form-section-title">2. Método de Envío</legend>
+
+                        <div class="radio-options-grid">
+                            <label class="radio-card">
+                                <input type="radio" name="envio" value="domicilio" checked>
+                                <div class="radio-card-body">
+                                    <strong>Envío a Domicilio</strong>
+                                    <span>Entrega en 2-4 días (L 120.00)</span>
+                                </div>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="envio" value="tienda">
+                                <div class="radio-card-body">
+                                    <strong>Retiro en Tienda</strong>
+                                    <span>Sin costo en sucursal</span>
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="carrito-item form-section">
+                        <legend class="form-section-title">3. Método de Pago</legend>
+
+                        <div class="radio-options-grid three-cols mb-20">
+                            <label class="radio-card mini">
+                                <input type="radio" name="pago" value="tarjeta" checked>
+                                <span>Tarjeta</span>
+                            </label>
+
+                            <label class="radio-card mini">
+                                <input type="radio" name="pago" value="transferencia">
+                                <span>Transferencia</span>
+                            </label>
+
+                            <label class="radio-card mini">
+                                <input type="radio" name="pago" value="contraEntrega">
+                                <span>Contra Entrega</span>
+                            </label>
+                        </div>
+
+                        <div id="cardDataSection" class="card-details-wrapper">
+                            <div class="form-row single-col">
+                                <div class="form-group">
+                                    <label for="cardName">Nombre del Titular</label>
+                                    <input type="text" id="cardName" name="cardName" placeholder="Como figura en la tarjeta" autocomplete="cc-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardNumber">Número de Tarjeta</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="cc-number" inputmode="numeric">
+                                </div>
+                            </div>
+
+                            <div class="form-row two-cols">
+                                <div class="form-group">
+                                    <label for="expiration">Vencimiento (MM/AA)</label>
+                                    <input type="text" id="expiration" name="expiration" maxlength="5" placeholder="MM/AA" autocomplete="cc-exp" inputmode="numeric">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="password" id="cvv" name="cvv" maxlength="4" placeholder="123" autocomplete="cc-csc" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </form>
+            </section>
+
+            <aside class="carrito-resumen" aria-label="Resumen de la orden">
+                <h2>Resumen de Compra</h2>
+
+                <div id="checkoutCartItems" class="checkout-items-list" aria-live="polite">
+                </div>
+
+                <div class="resumen-fila">
+                    <span>Subtotal</span>
+                    <strong id="subtotal">L 0.00</strong>
+                </div>
+
+                <div class="resumen-fila">
+                    <span>Envío</span>
+                    <strong id="shipping">L 120.00</strong>
+                </div>
+
+                <div class="resumen-fila">
+                    <span>Descuento</span>
+                    <strong id="discount" class="text-discount">L 0.00</strong>
+                </div>
+
+                <p class="resumen-envio-nota" id="shippingNote">
+                    Costo de envío aplicado para entrega local.
+                </p>
+
+                <div class="resumen-total">
+                    <span>Total a pagar</span>
+                    <strong id="total">L 0.00</strong>
+                </div>
+
+                <button type="submit" form="checkoutForm" class="cta-btn full-width" id="btnCheckout">
+                    Confirmar Pedido
+                </button>
+
+                <div class="trust-bar">
+                    <div class="trust-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <span>Pago 100% encriptado y seguro</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                        <span>Seguimiento de entrega en tiempo real</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <h3>Patty's Store</h3>
+                <p>Maquillaje, ropa y accesorios elegidos especialmente para ti. Realza tu esencia con elegancia y actitud.</p>
+            </div>
+            
+            <nav class="footer-col" aria-label="Navegación del pie de página">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Categorías de productos">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="productos.html?cat=maquillaje">Maquillaje</a></li>
+                    <li><a href="productos.html?cat=cuidado-facial">Cuidado Facial</a></li>
+                    <li><a href="productos.html?cat=ropa">Ropa & Moda</a></li>
+                    <li><a href="productos.html?cat=accesorios">Accesorios</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-col" aria-label="Atención al cliente">
+                <h4>Atención</h4>
+                <ul>
+                    <li><a href="#">Envíos & Devoluciones</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Patty's Store. Todos los derechos reservados.</p>
+            <p>Diseñado con elegancia</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
