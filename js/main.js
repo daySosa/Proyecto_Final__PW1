@@ -28,7 +28,6 @@ function initMobileMenu() {
   });
 }
 
-/* ---------- Menú "Más" del escritorio ---------- */
 function initMoreMenu() {
   var navMore = document.getElementById("navMore");
   var moreBtn = document.getElementById("moreBtn");
