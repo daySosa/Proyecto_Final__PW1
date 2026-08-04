@@ -54,7 +54,6 @@ function initMoreMenu() {
   });
 }
 
-/* ---------- Año dinámico ---------- */
 function setCurrentYear() {
   var yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
