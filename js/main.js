@@ -73,7 +73,6 @@ function initHeaderShadow() {
 }
 
 /* ---------- Carrusel del hero (3 imágenes con transición) ----------
-   Mejora: ahora se pausa el autoplay cuando el mouse está encima
 
 
 function initHeroCarousel() {
