@@ -158,7 +158,7 @@ function isValidEmail(value) {
 
 /* =========================================================
    CARRITO
-   Usa localStorage para persistir el carrito entre páginas,
+
 
 
 function initAddToCart() {
