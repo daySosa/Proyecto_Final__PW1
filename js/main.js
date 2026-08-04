@@ -73,7 +73,6 @@ function initHeaderShadow() {
 }
 
 
-
 function initHeroCarousel() {
   var slider = document.getElementById("heroSlider");
   var slides = document.querySelectorAll("#heroSlider .hero-slide");
