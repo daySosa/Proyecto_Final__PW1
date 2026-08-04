@@ -160,7 +160,7 @@ function isValidEmail(value) {
    CARRITO
    Usa localStorage para persistir el carrito entre páginas,
    sin necesidad de backend. La clave usada es "pattysCart".
-   ========================================================= */
+
 function initAddToCart() {
   var buttons = document.querySelectorAll(".add-btn");
   if (!buttons.length) return;
