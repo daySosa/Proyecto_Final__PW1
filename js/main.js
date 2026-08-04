@@ -201,7 +201,7 @@ function updateCartBadge() {
   badge.textContent = cart.length;
 }
 
-/* =========================================================
+
 
 
 
