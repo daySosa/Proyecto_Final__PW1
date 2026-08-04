@@ -919,7 +919,6 @@ header.scrolled {
   transition: color .3s ease;
 }
 
-/* ---------- Productos ---------- */
 .products-section {
   position: relative;
   background: linear-gradient(160deg, #E2B3C2 0%, #AC5B67 100%);
