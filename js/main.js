@@ -205,7 +205,7 @@ function updateCartBadge() {
    BÚSQUEDA FUNCIONAL
    El buscador arma su índice leyendo el propio HTML (tarjetas de
    producto, categorías y noticias), así que si agregas o cambias
-   productos en el index.html, el buscador se actualiza solo:
+
 
 
 function initSearch() {
