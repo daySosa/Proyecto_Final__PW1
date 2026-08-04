@@ -75,7 +75,7 @@ function initHeaderShadow() {
 /* ---------- Carrusel del hero (3 imágenes con transición) ----------
    Mejora: ahora se pausa el autoplay cuando el mouse está encima
    (igual que se comenta en el patrón de "onProcess" del Carusel visto en clase,
-   evita que la imagen cambie mientras el usuario la está mirando) */
+
 function initHeroCarousel() {
   var slider = document.getElementById("heroSlider");
   var slides = document.querySelectorAll("#heroSlider .hero-slide");
