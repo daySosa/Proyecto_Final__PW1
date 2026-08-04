@@ -156,7 +156,7 @@ function isValidEmail(value) {
   return pattern.test(value);
 }
 
-/* =========================================================
+
 
 
 
