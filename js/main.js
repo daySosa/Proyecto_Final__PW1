@@ -156,7 +156,6 @@ function isValidEmail(value) {
   return pattern.test(value);
 }
 
-
 function initAddToCart() {
   var buttons = document.querySelectorAll(".add-btn");
   if (!buttons.length) return;
