@@ -207,7 +207,7 @@ function updateCartBadge() {
    producto, categorías y noticias), así que si agregas o cambias
    productos en el index.html, el buscador se actualiza solo:
    no hay que tocar el JS para eso.
-   ========================================================= */
+
 function initSearch() {
   var trigger = document.getElementById("searchTrigger");
   var overlay = document.getElementById("searchOverlay");
