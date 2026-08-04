@@ -116,7 +116,7 @@ function initHeroCarousel() {
     });
   });
 
-  // Pausa al pasar el mouse, reanuda al salir
+
   if (slider) {
     slider.addEventListener("mouseenter", stopAutoplay);
     slider.addEventListener("mouseleave", startAutoplay);
