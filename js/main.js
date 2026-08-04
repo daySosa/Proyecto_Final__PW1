@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCartBadge();
 });
 
-/* ---------- Menú móvil ---------- */
 function initMobileMenu() {
   var burger = document.getElementById("burgerBtn");
   var mobileMenu = document.getElementById("mobileMenu");
