@@ -993,9 +993,6 @@ header.scrolled {
   margin-bottom: 14px;
 }
 
-/* AJUSTE: se agregó margin-top para separar el precio del título,
-   y padding lateral extra para que "L. XXX" y el botón "+" no
-   queden tan pegados a los bordes izquierdo/derecho de la tarjeta */
 .product-price{
   display:flex;
   align-items:center;
