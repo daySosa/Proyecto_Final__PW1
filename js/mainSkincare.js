@@ -1,9 +1,8 @@
-const CART_KEY = 'pattysCartV1';
+const CART_KEY = 'pattysCart';
 
 function getCart() {
   try {
-    const raw = localStorage.getItem(CART_KEY);
-    return raw ? JSON.parse(raw) : [];
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
   } catch (e) {
     return [];
   }
@@ -13,31 +12,27 @@ function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-function addToCart(id, name, price, img) {
+function addToCart(name, price) {
   const cart = getCart();
-  const existing = cart.find(item => item.id === id);
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({ id, name, price: Number(price), img, qty: 1 });
-  }
+  cart.push({ name: name, price: Number(price) });
   saveCart(cart);
   updateCartBadge();
 }
 
 function updateCartBadge() {
   const cart = getCart();
-  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  const total = cart.length;
 
+  // Badge de esta página (skincare)
   const badge = document.getElementById('cartCount');
   if (badge) {
-    badge.textContent = totalQty;
-    badge.hidden = totalQty === 0;
+    badge.textContent = total;
+    badge.hidden = total === 0;
   }
 
-  const mobileCount = document.getElementById('cartCountMobile');
-  if (mobileCount) {
-    mobileCount.textContent = totalQty;
+  const mainBadge = document.getElementById('cartBadge');
+  if (mainBadge) {
+    mainBadge.textContent = total;
   }
 }
 
@@ -47,19 +42,46 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.cart-add-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const { id, name, price, img } = btn.dataset;
-      addToCart(id, name, price, img);
+      const { name, price } = btn.dataset;
+      addToCart(name, price);
+
+      const original = btn.textContent;
+      btn.textContent = '✓';
+      setTimeout(() => { btn.textContent = original; }, 900);
     });
   });
 
   const searchTrigger = document.getElementById('searchTrigger');
   const searchOverlay = document.getElementById('searchOverlay');
   const searchClose = document.getElementById('searchClose');
+  const searchInput = document.getElementById('searchInput');
+
+  function openSearch() {
+    searchOverlay.classList.add('open');
+    searchTrigger.setAttribute('aria-expanded', 'true');
+    setTimeout(() => searchInput && searchInput.focus(), 50);
+  }
+
+  function closeSearch() {
+    searchOverlay.classList.remove('open');
+    searchTrigger.setAttribute('aria-expanded', 'false');
+  }
+
   if (searchTrigger && searchOverlay) {
-    searchTrigger.addEventListener('click', () => searchOverlay.classList.add('open'));
+    searchTrigger.addEventListener('click', () => {
+      searchOverlay.classList.contains('open') ? closeSearch() : openSearch();
+    });
   }
   if (searchClose && searchOverlay) {
-    searchClose.addEventListener('click', () => searchOverlay.classList.remove('open'));
+    searchClose.addEventListener('click', closeSearch);
+  }
+  if (searchOverlay) {
+    searchOverlay.addEventListener('click', (e) => {
+      if (e.target === searchOverlay) closeSearch();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchOverlay.classList.contains('open')) closeSearch();
+    });
   }
 
   const moreBtn = document.getElementById('moreBtn');
@@ -75,6 +97,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobileMenu');
   if (burgerBtn && mobileMenu) {
     burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+  const form = document.getElementById('newsletterFormSkincare');
+  if (form) {
+    const emailInput = document.getElementById('newsletterEmailSkincare');
+    const errorSpan = document.getElementById('newsletterErrorSkincare');
+    const successMsg = document.getElementById('newsletterSuccessSkincare');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = emailInput.value.trim();
+      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+      if (!isValid) {
+        emailInput.classList.add('invalid');
+        errorSpan.textContent = 'Por favor ingresa un correo electrónico válido.';
+        successMsg.classList.remove('show');
+        return;
+      }
+
+      emailInput.classList.remove('invalid');
+      errorSpan.textContent = '';
+      successMsg.textContent = '¡Gracias por suscribirte, ' + value + '!';
+      successMsg.classList.add('show');
+      form.reset();
+    });
   }
 });
 
