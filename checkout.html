@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Patty's Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/checkout.js"></script>
+</head>
+
+<body>
+
+    <header id="siteHeader">
+        <div class="wrap nav-bar">
+            <a href="index.html" class="logo">Patty<span>'s</span> Store</a>
+
+            <nav class="nav-links" aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="maquillaje.html">Maquillaje</a>
+                <a href="ropa.html">Ropa</a>
+                <a href="accesorios.html">Accesorios</a>
+                <a href="Producto_Skincare.html">Skincare</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog"
+                    aria-expanded="false">&#128269;</button>
+
+                <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" aria-current="page">
+                    &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
+                </button>
+
+                <a href="ofertas.html" class="cta-btn ghost cat-cta">Ofertas</a>
+
+                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+            <a href="index.html">Inicio</a>
+            <a href="maquillaje.html">Maquillaje</a>
+            <a href="ropa.html">Ropa</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="Producto_Skincare.html">Skincare</a>
+            <a href="ofertas.html">Ofertas</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="wrap">
+
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <span class="sep">/</span>
+                <a href="carrito.html">Carrito</a>
+                <span class="sep">/</span>
+                <span class="current">Checkout</span>
+            </nav>
+
+            <span class="section-eyebrow">FINALIZAR PEDIDO</span>
+            <h1 class="section-title">Proceso de Pago</h1>
+
+            <div class="carrito-wrap">
+
+                <section class="carrito-items">
+                    <form id="checkoutForm" action="#" method="post" class="checkout-form-grid">
+
+                        <div class="carrito-item form-section">
+                            <h2 class="form-section-title">1. Datos de Contacto y Envío</h2>
+
+                            <div class="form-row two-cols">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre Completo</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Amanda Rodríguez">
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo">Correo Electrónico</label>
+                                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com">
+                                </div>
+                            </div>
+
+                            <div class="form-row two-cols">
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="tel" id="telefono" name="telefono" placeholder="+504 9999-9999">
+                                </div>
+                                <div class="form-group">
+                                    <label for="departamento">Departamento</label>
+                                    <select id="departamento" name="departamento">
+                                        <option value="" disabled selected>Seleccionar departamento</option>
+                                        <option value="Francisco Morazán">Francisco Morazán</option>
+                                        <option value="Cortés">Cortés</option>
+                                        <option value="Atlántida">Atlántida</option>
+                                        <option value="Choluteca">Choluteca</option>
+                                        <option value="Comayagua">Comayagua</option>
+                                        <option value="Copán">Copán</option>
+                                        <option value="El Paraíso">El Paraíso</option>
+                                        <option value="Olancho">Olancho</option>
+                                        <option value="Santa Bárbara">Santa Bárbara</option>
+                                        <option value="Yoro">Yoro</option>
+                                        <option value="Colón">Colón</option>
+                                        <option value="Intibucá">Intibucá</option>
+                                        <option value="La Paz">La Paz</option>
+                                        <option value="Lempira">Lempira</option>
+                                        <option value="Ocotepeque">Ocotepeque</option>
+                                        <option value="Valle">Valle</option>
+                                        <option value="Gracias a Dios">Gracias a Dios</option>
+                                        <option value="Islas de la Bahía">Islas de la Bahía</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row two-cols">
+                                <div class="form-group">
+                                    <label for="municipio">Municipio</label>
+                                    <select id="municipio" name="municipio" disabled>
+                                        <option value="" disabled selected>Primero seleccione departamento</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="direccion">Dirección Exacta</label>
+                                    <input type="text" id="direccion" name="direccion"
+                                        placeholder="Colonia, calle, referencia...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carrito-item form-section">
+                            <h2 class="form-section-title">2. Método de Envío</h2>
+
+                            <div class="radio-options-grid">
+                                <label class="radio-card">
+                                    <input type="radio" name="envio" value="domicilio" checked>
+                                    <div class="radio-card-body">
+                                        <strong>Envío a Domicilio</strong>
+                                        <span>Entrega en 2-4 días (L 120.00)</span>
+                                    </div>
+                                </label>
+
+                                <label class="radio-card">
+                                    <input type="radio" name="envio" value="tienda">
+                                    <div class="radio-card-body">
+                                        <strong>Retiro en Tienda</strong>
+                                        <span>Sin costo en sucursal</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="carrito-item form-section">
+                            <h2 class="form-section-title">3. Método de Pago</h2>
+
+                            <div class="radio-options-grid three-cols mb-20">
+                                <label class="radio-card mini">
+                                    <input type="radio" name="pago" value="tarjeta" checked>
+                                    <span>Tarjeta</span>
+                                </label>
+
+                                <label class="radio-card mini">
+                                    <input type="radio" name="pago" value="contraEntrega">
+                                    <span>Contra Entrega</span>
+                                </label>
+                            </div>
+
+                            <div id="cardDataSection">
+                                <div class="form-row two-cols mb-14">
+                                    <div class="form-group">
+                                        <label for="cardName">Nombre del Titular</label>
+                                        <input type="text" id="cardName" placeholder="Como figura en la tarjeta">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardNumber">Número de Tarjeta</label>
+                                        <input type="text" id="cardNumber" maxlength="19"
+                                            placeholder="0000 0000 0000 0000">
+                                    </div>
+                                </div>
+
+                                <div class="form-row two-cols">
+                                    <div class="form-group">
+                                        <label for="expiration">Vencimiento (MM/AA)</label>
+                                        <input type="text" id="expiration" maxlength="5" placeholder="MM/AA">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="password" id="cvv" maxlength="4" placeholder="123">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </section>
+
+                <aside class="carrito-resumen">
+                    <h2>Resumen de Compra</h2>
+
+                    <div id="checkoutCartItems" class="checkout-items-list">
+                    </div>
+
+                    <div class="resumen-fila">
+                        <span>Subtotal</span>
+                        <strong id="subtotal">L 0.00</strong>
+                    </div>
+
+                    <div class="resumen-fila">
+                        <span>Envío</span>
+                        <strong id="shipping">L 120.00</strong>
+                    </div>
+
+                    <div class="resumen-fila">
+                        <span>Descuento</span>
+                        <strong id="discount" class="text-discount">L 0.00</strong>
+                    </div>
+
+                    <p class="resumen-envio-nota" id="shippingNote">
+                        Costo de envío aplicado para entrega local.
+                    </p>
+
+                    <div class="resumen-total">
+                        <span>Total a pagar</span>
+                        <strong id="total">L 0.00</strong>
+                    </div>
+
+                    <button type="submit" form="checkoutForm" class="cta-btn full-width" id="btnCheckout">
+                        Confirmar Pedido
+                    </button>
+
+                    <div class="trust-bar">
+                        <div class="trust-item">
+                            <span>✓ Pago 100% encriptado y seguro</span>
+                        </div>
+                        <div class="trust-item">
+                            <span>✓ Seguimiento de entrega en tiempo real</span>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap footer-grid">
+            <div>
+                <h3>Patty's Store</h3>
+                <p>Tu tienda de confianza para realzar tu belleza y estilo con productos seleccionados con amor.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="productos.html?cat=maquillaje">Maquillaje</a></li>
+                    <li><a href="productos.html?cat=ropa">Ropa</a></li>
+                    <li><a href="productos.html?cat=accesorios">Accesorios</a></li>
+                    <li><a href="productos.html?cat=skincare">Skincare</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Envío</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap footer-bottom">
+            <p>&copy; 2026 Patty's Store. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
