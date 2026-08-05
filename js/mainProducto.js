@@ -4,7 +4,7 @@ const CATALOGOS = {
   maquillaje: { label: 'Maquillaje', href: 'maquillaje.html', tabExtra: 'Modo de uso' },
   ropa: { label: 'Ropa', href: 'ropa.html', tabExtra: 'Guía de tallas y cuidado' },
   accesorios: { label: 'Accesorios', href: 'accesorios.html', tabExtra: 'Cuidado y materiales' },
-  skincare: { label: 'Skincare', href: 'skincare.html', tabExtra: 'Modo de uso' }
+  skincare: { label: 'Skincare', href: 'Producto_Skincare.html', tabExtra: 'Modo de uso' }
 };
 
 const PRODUCTOS = Object.assign(
@@ -44,15 +44,9 @@ function updateCartBadge() {
   const cart = getCart();
   const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  const badge = document.getElementById('cartCount');
+  const badge = document.getElementById('cartBadge');
   if (badge) {
     badge.textContent = totalQty;
-    badge.hidden = totalQty === 0;
-  }
-
-  const mobileCount = document.getElementById('cartCountMobile');
-  if (mobileCount) {
-    mobileCount.textContent = totalQty;
   }
 }
 
