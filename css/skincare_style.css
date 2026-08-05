@@ -139,7 +139,14 @@ header.scrolled {
   width: 100%;
 }
 
-/* ---------- Menú "Más" ---------- */
+.nav-links a[aria-current="page"] {
+  color: #781727;
+}
+
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+}
+
 .nav-more {
   position: relative;
 }
@@ -249,7 +256,6 @@ header.scrolled {
   box-shadow: 0 0 46px rgba(120, 23, 39, 0.45);
 }
 
-/* ---------- Carrito (ícono + badge) ---------- */
 .cart-icon {
   position: relative;
   text-decoration: none;
@@ -325,7 +331,6 @@ header.scrolled {
   border-radius: 2px;
 }
 
-/* ---------- Panel de búsqueda ---------- */
 .search-overlay {
   position: fixed;
   top: 0;
@@ -494,7 +499,6 @@ header.scrolled {
   100% { box-shadow: 0 0 0 0 rgba(172, 91, 103, 0); }
 }
 
-/* ---------- Encabezado de catálogo (hero de skincare) ---------- */
 .blog-hero {
   padding: 56px 0 36px;
   background: linear-gradient(180deg, #FBF3EC 0%, #F6EAE0 100%);
@@ -509,7 +513,6 @@ header.scrolled {
   margin-top: 18px;
 }
 
-/* ---------- Filtros de categoría ---------- */
 .blog-filters-section {
   background: linear-gradient(160deg, #E2B3C2 0%, #AC5B67 100%);
   padding: 26px 0;
@@ -555,7 +558,6 @@ header.scrolled {
   font-size: 0.95rem;
 }
 
-/* ---------- Encabezados de sección ---------- */
 .section {
   padding: 90px 0;
   position: relative;
@@ -601,7 +603,6 @@ header.scrolled {
   margin-bottom: 18px;
 }
 
-/* ---------- Productos ---------- */
 .products-section {
   position: relative;
   background: linear-gradient(160deg, #E2B3C2 0%, #AC5B67 100%);
@@ -641,6 +642,12 @@ header.scrolled {
 .product-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 30px 60px rgba(22, 3, 6, 0.32), 0 0 40px rgba(172, 91, 103, 0.35);
+}
+
+.product-link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
 }
 
 .product-img {
@@ -718,7 +725,6 @@ header.scrolled {
   transform: scale(1.08);
 }
 
-/* ---------- Newsletter ---------- */
 .newsletter {
   position: relative;
   background: linear-gradient(160deg, #4E0714 0%, #160306 100%);
@@ -827,7 +833,6 @@ header.scrolled {
   display: block;
 }
 
-/* ---------- Footer ---------- */
 footer {
   background: linear-gradient(180deg, #2A0509 0%, #160306 100%);
   color: #EFD4C4;
@@ -892,7 +897,6 @@ footer {
   opacity: 0.6;
 }
 
-/* ---------- Menú móvil ---------- */
 .mobile-menu {
   display: none;
   flex-direction: column;
@@ -915,9 +919,6 @@ footer {
   padding: 18px 32px;
 }
 
-/* =========================================================
-   Responsivo
-   ========================================================= */
 @media (max-width: 1150px) {
   .nav-right { gap: 24px; }
   .nav-links { gap: 16px; }
