@@ -1,7 +1,5 @@
 const CART_KEY = 'pattysCartV1';
 
-// Metadatos de cada línea de producto: a qué catálogo pertenece
-// y cómo se llama la segunda pestaña de información.
 const CATALOGOS = {
   maquillaje: { label: 'Maquillaje', href: 'maquillaje.html', tabExtra: 'Modo de uso' },
   ropa: { label: 'Ropa', href: 'ropa.html', tabExtra: 'Guía de tallas y cuidado' },
@@ -9,7 +7,6 @@ const CATALOGOS = {
   skincare: { label: 'Skincare', href: 'skincare.html', tabExtra: 'Modo de uso' }
 };
 
-// Combina las 4 fuentes de datos (cada una cargada por su propio <script>)
 const PRODUCTOS = Object.assign(
   {},
   window.PRODUCTOS_MAQUILLAJE || {},
@@ -59,7 +56,6 @@ function updateCartBadge() {
   }
 }
 
-// ---------- Galería de imágenes (soporta 1 o varias imágenes) ----------
 function renderGaleria(producto) {
   const mainImg = document.getElementById('productoImg');
   const thumbsWrap = document.getElementById('productoThumbs');
@@ -89,7 +85,6 @@ function renderGaleria(producto) {
   });
 }
 
-// ---------- Productos relacionados: misma subcategoría primero, misma línea después ----------
 function renderRelacionados(idActual, producto) {
   const grid = document.getElementById('relacionadosGrid');
   const wrap = document.getElementById('relacionadosWrap');
@@ -138,7 +133,6 @@ function renderRelacionados(idActual, producto) {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartBadge();
 
-  // ---------- Header compartido: buscador, menú "Más", menú móvil ----------
   const searchTrigger = document.getElementById('searchTrigger');
   const searchOverlay = document.getElementById('searchOverlay');
   const searchClose = document.getElementById('searchClose');
@@ -172,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---------- Cargar el producto según ?id= ----------
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   const producto = id ? PRODUCTOS[id] : null;
@@ -190,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.title = producto.nombre + " — Patty's Store";
 
-  // Breadcrumb dinámico
   const breadcrumbCategoria = document.getElementById('breadcrumbCategoria');
   const breadcrumbNombre = document.getElementById('breadcrumbNombre');
   if (breadcrumbCategoria) {
@@ -199,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   if (breadcrumbNombre) breadcrumbNombre.textContent = producto.nombre;
 
-  // Volver al catálogo correcto
   const volverLink = document.getElementById('productoVolver');
   if (volverLink) {
     volverLink.href = catalogo.href;
@@ -221,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
   contenido.hidden = false;
   tabsWrap.hidden = false;
 
-  // Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
   tabBtns.forEach(btn => {
@@ -234,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cantidad
   const cantidadInput = document.getElementById('productoCantidad');
   document.getElementById('cantidadMenos').addEventListener('click', () => {
     const actual = parseInt(cantidadInput.value, 10) || 1;
