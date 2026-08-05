@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas y Promociones - Patty's Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/ofertas.css">
+</head>
+
+<body>
+
+    <header id="siteHeader">
+        <div class="wrap nav-bar">
+            <a href="index.html" class="logo">Patty<span>'s</span> Store</a>
+
+            <nav class="nav-links" aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="maquillaje.html">Maquillaje</a>
+                <a href="ropa.html">Ropa</a>
+                <a href="accesorios.html">Accesorios</a>
+                <a href="Producto_Skincare.html">Skincare</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+
+                <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" aria-current="page">
+                    &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
+                </button>
+
+                <a href="ofertas.html" class="cta-btn ghost cat-cta">Ofertas</a>
+
+                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
+            <a href="index.html">Inicio</a>
+            <a href="maquillaje.html">Maquillaje</a>
+            <a href="ropa.html">Ropa</a>
+            <a href="accesorios.html">Accesorios</a>
+            <a href="Producto_Skincare.html">Skincare</a>
+            <a href="ofertas.html">Ofertas</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="wrap section">
+        <div class="breadcrumb">
+            <a href="index.html">Inicio</a>
+            <span class="sep">/</span>
+            <span class="current">Promociones y Descuentos</span>
+        </div>
+
+        <div class="offers-header">
+            <span class="section-eyebrow">Exclusivo por Tiempo Limitado</span>
+            <h1 class="section-title">Ofertas e Imprescindibles</h1>
+            <p class="section-desc">Aprovecha descuentos especiales en maquillaje, skincare, ropa y accesorios seleccionados.</p>
+        </div>
+
+        <div class="products-grid">
+            <article class="product-card">
+                <span class="discount-tag">-30% OFF</span>
+                <div class="product-img">
+                    <img src="Ofertas_Img/Oferta_SetMaquillaje.jpg" alt="Set de Maquillaje Glow">
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Maquillaje</span>
+                    <h3 class="product-title">Set de Maquillaje Luminosidad Glow</h3>
+                    <div class="product-price">
+                        <span class="old-price">L. 1,100.00</span>
+                        <span class="current-price">L. 770.00</span>
+                    </div>
+                    <button class="cta-btn add-to-cart-btn" data-id="1">Agregar al Carrito</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <span class="discount-tag">-50% OFF</span>
+                <div class="product-img">
+                    <img src="Ofertas_Img/Oferta_Serum.jpg" alt="Sérum Hidratante Skincare">
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Skincare</span>
+                    <h3 class="product-title">Sérum Facial Ácido Hialurónico</h3>
+                    <div class="product-price">
+                        <span class="old-price">L. 700.00</span>
+                        <span class="current-price">L. 350.00</span>
+                    </div>
+                    <button class="cta-btn add-to-cart-btn" data-id="2">Agregar al Carrito</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <span class="discount-tag">-20% OFF</span>
+                <div class="product-img">
+                    <img src="Ofertas_Img/Oferta_Vestido.jpg" alt="Vestido Satinado">
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Ropa</span>
+                    <h3 class="product-title">Vestido Satinado Midi Floral</h3>
+                    <div class="product-price">
+                        <span class="old-price">L. 1,600.00</span>
+                        <span class="current-price">L. 1,280.00</span>
+                    </div>
+                    <button class="cta-btn add-to-cart-btn" data-id="3">Agregar al Carrito</button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <span class="discount-tag">-40% OFF</span>
+                <div class="product-img">
+                    <img src="Ofertas_Img/Oferta_Collares.jpg" alt="Set de Collares">
+                </div>
+                <div class="product-info">
+                    <span class="product-cat">Accesorios</span>
+                    <h3 class="product-title">Set de Collares Baño de Oro</h3>
+                    <div class="product-price">
+                        <span class="old-price">L. 850.00</span>
+                        <span class="current-price">L. 510.00</span>
+                    </div>
+                    <button class="cta-btn add-to-cart-btn" data-id="4">Agregar al Carrito</button>
+                </div>
+            </article>
+        </div>
+
+        <section class="promo-banner">
+            <div class="promo-content">
+                <h2>¿Quieres un 10% extra?</h2>
+                <p>Suscríbete a nuestro boletín para recibir ofertas secretas y cupones de descuento directo en tu correo.</p>
+
+                <form id="newsletterForm" novalidate>
+                    <div class="form-group">
+                        <div class="input-inline">
+                            <input type="email" id="newsletterEmail" placeholder="Tu correo electrónico...">
+                            <button type="submit" class="cta-btn">Suscribirme</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap footer-grid">
+            <div>
+                <h3>Patty's Store</h3>
+                <p>Tu tienda de confianza para realzar tu belleza y estilo con productos seleccionados con amor.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="productos.html?cat=maquillaje">Maquillaje</a></li>
+                    <li><a href="productos.html?cat=ropa">Ropa</a></li>
+                    <li><a href="productos.html?cat=accesorios">Accesorios</a></li>
+                    <li><a href="productos.html?cat=skincare">Skincare</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Envío</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap footer-bottom">
+            <p>&copy; 2026 Patty's Store. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/ofertas.js"></script>
+</body>
+
+</html>
