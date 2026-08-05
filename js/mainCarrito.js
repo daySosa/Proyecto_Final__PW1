@@ -22,7 +22,6 @@ function updateCartBadge() {
   const badge = document.getElementById('cartCount');
   if (badge) {
     badge.textContent = totalQty;
-    badge.hidden = totalQty === 0;
   }
 
   const mobileCount = document.getElementById('cartCountMobile');
