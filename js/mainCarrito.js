@@ -19,13 +19,8 @@ function updateCartBadge() {
   const cart = getCart();
   const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  const badge = document.getElementById('cartCount');
-  if (badge) {
-    badge.textContent = totalQty;
-  }
-
-  const mobileCount = document.getElementById('cartCountMobile');
-  if (mobileCount) mobileCount.textContent = totalQty;
+  const badge = document.getElementById('cartBadge');
+  if (badge) badge.textContent = totalQty;
 }
 
 function formatMoney(n) {
@@ -124,7 +119,6 @@ function renderResumen(cart) {
 document.addEventListener('DOMContentLoaded', () => {
   renderCarrito();
 
-  // ---------- Header compartido ----------
   const searchTrigger = document.getElementById('searchTrigger');
   const searchOverlay = document.getElementById('searchOverlay');
   const searchClose = document.getElementById('searchClose');
@@ -144,6 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobileMenu');
   if (burgerBtn && mobileMenu) {
     burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+
+  const moreBtn = document.getElementById('moreBtn');
+  const navMore = document.getElementById('navMore');
+  if (moreBtn && navMore) {
+    moreBtn.addEventListener('click', () => navMore.classList.toggle('open'));
+    document.addEventListener('click', (e) => {
+      if (!navMore.contains(e.target)) navMore.classList.remove('open');
+    });
   }
 
   const yearEl = document.getElementById('year');
