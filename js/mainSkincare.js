@@ -23,11 +23,9 @@ function updateCartBadge() {
   const cart = getCart();
   const total = cart.length;
 
-  // Badge de esta página (skincare)
   const badge = document.getElementById('cartCount');
   if (badge) {
     badge.textContent = total;
-    badge.hidden = total === 0;
   }
 
   const mainBadge = document.getElementById('cartBadge');
