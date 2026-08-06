@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initNewsletterForm();
   initHeroCarousel();
   initHeaderShadow();
-  initSearch();
   initAddToCart();
   updateCartBadge();
 });
@@ -165,11 +164,16 @@ function initAddToCart() {
       event.preventDefault();
       event.stopPropagation();
 
+      var name = btn.dataset.product || "Producto";
+      var price = Number(btn.dataset.price) || 0;
+
       var cart = getCart();
-      cart.push({
-        name: btn.dataset.product || "Producto",
-        price: btn.dataset.price || "0"
-      });
+      var existing = cart.find(function (item) { return item.name === name; });
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name: name, price: price, qty: 1 });
+      }
       saveCart(cart);
       updateCartBadge();
 
@@ -184,196 +188,20 @@ function initAddToCart() {
 
 function getCart() {
   try {
-    return JSON.parse(localStorage.getItem("pattysCart")) || [];
+    return JSON.parse(localStorage.getItem("pattysCartV1")) || [];
   } catch (e) {
     return [];
   }
 }
 
 function saveCart(cart) {
-  localStorage.setItem("pattysCart", JSON.stringify(cart));
+  localStorage.setItem("pattysCartV1", JSON.stringify(cart));
 }
 
 function updateCartBadge() {
   var badge = document.getElementById("cartBadge");
   if (!badge) return;
   var cart = getCart();
-  badge.textContent = cart.length;
-}
-
-function initSearch() {
-  var trigger = document.getElementById("searchTrigger");
-  var overlay = document.getElementById("searchOverlay");
-  var closeBtn = document.getElementById("searchClose");
-  var input = document.getElementById("searchInput");
-  var resultsBox = document.getElementById("searchResults");
-  if (!trigger || !overlay || !input || !resultsBox) return;
-
-  var index = buildSearchIndex();
-
-  function openSearch() {
-    overlay.classList.add("open");
-    trigger.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
-    setTimeout(function () { input.focus(); }, 50);
-  }
-
-  function closeSearch() {
-    overlay.classList.remove("open");
-    trigger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-  }
-
-  trigger.addEventListener("click", function () {
-    var isOpen = overlay.classList.contains("open");
-    if (isOpen) {
-      closeSearch();
-    } else {
-      openSearch();
-    }
-  });
-
-  closeBtn.addEventListener("click", closeSearch);
-
-  overlay.addEventListener("click", function (event) {
-    if (event.target === overlay) closeSearch();
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && overlay.classList.contains("open")) {
-      closeSearch();
-    }
-  });
-
-  input.addEventListener("input", function () {
-    renderResults(input.value.trim());
-  });
-
-  function renderResults(query) {
-    if (query === "") {
-      resultsBox.innerHTML = '<p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios, cuidado personal y novedades.</p>';
-      return;
-    }
-
-    var q = normalize(query);
-    var matches = index.filter(function (item) {
-      return item.searchText.indexOf(q) !== -1;
-    });
-
-    if (matches.length === 0) {
-      resultsBox.innerHTML = '<p class="search-empty">No encontramos resultados para "' + escapeHtml(query) + '". Prueba con otra palabra.</p>';
-      return;
-    }
-
-    resultsBox.innerHTML = "";
-    matches.forEach(function (item) {
-      var row = document.createElement("div");
-      row.className = "search-result-item";
-      row.innerHTML =
-        (item.image ? '<div class="search-result-thumb"><img src="' + item.image + '" alt=""></div>' : "") +
-        '<div class="search-result-info"><strong>' + highlight(item.title, query) + '</strong><span>' + item.tag + '</span></div>' +
-        (item.price ? '<div class="search-result-price">' + item.price + '</div>' : "");
-
-      row.addEventListener("click", function () {
-        goToResult(item);
-      });
-      resultsBox.appendChild(row);
-    });
-  }
-
-  function goToResult(item) {
-    closeSearch();
-    var target = document.getElementById(item.targetId) || item.el;
-    if (!target) return;
-
-    setTimeout(function () {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-      var highlightEl = item.el || target;
-      highlightEl.classList.add("search-highlight");
-      setTimeout(function () {
-        highlightEl.classList.remove("search-highlight");
-      }, 1500);
-    }, 200);
-  }
-
-  function buildSearchIndex() {
-    var items = [];
-
-    document.querySelectorAll(".product-card").forEach(function (card, i) {
-      var name = card.querySelector("h4") ? card.querySelector("h4").textContent.trim() : "Producto";
-      var tag = card.querySelector(".product-tag") ? card.querySelector(".product-tag").textContent.trim() : "Producto";
-      var price = card.querySelector(".product-price strong") ? card.querySelector(".product-price strong").textContent.trim() : "";
-      var img = card.querySelector("img") ? card.querySelector("img").getAttribute("src") : "";
-
-      if (!card.id) card.id = "search-product-" + i;
-
-      items.push({
-        title: name,
-        tag: tag,
-        price: price,
-        image: img,
-        el: card,
-        targetId: card.id,
-        searchText: normalize(name + " " + tag)
-      });
-    });
-
-    document.querySelectorAll(".cat-card").forEach(function (card, i) {
-      var name = card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "Categoría";
-      var desc = card.querySelector("p") ? card.querySelector("p").textContent.trim() : "";
-      var img = card.querySelector("img") ? card.querySelector("img").getAttribute("src") : "";
-
-      if (!card.id) card.id = "search-category-" + i;
-
-      items.push({
-        title: name,
-        tag: "Categoría · " + desc,
-        price: "",
-        image: img,
-        el: card,
-        targetId: card.id,
-        searchText: normalize(name + " " + desc)
-      });
-    });
-
-    document.querySelectorAll(".brand-card").forEach(function (card, i) {
-      var name = card.querySelector(".brand-name") ? card.querySelector(".brand-name").textContent.trim() : "Marca";
-      var tag = card.querySelector(".brand-tag") ? card.querySelector(".brand-tag").textContent.trim() : "";
-
-      if (!card.id) card.id = "search-brand-" + i;
-
-      items.push({
-        title: name,
-        tag: "Marca · " + tag,
-        price: "",
-        image: "",
-        el: card,
-        targetId: card.id,
-        searchText: normalize(name + " " + tag)
-      });
-    });
-
-    return items;
-  }
-
-  function normalize(text) {
-    return text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-  }
-
-  function escapeHtml(text) {
-    var div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  function highlight(title, query) {
-    var safeTitle = escapeHtml(title);
-    var safeQuery = escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    if (!safeQuery) return safeTitle;
-    var re = new RegExp("(" + safeQuery + ")", "ig");
-    return safeTitle.replace(re, "<mark>$1</mark>");
-  }
+  var totalQty = cart.reduce(function (sum, item) { return sum + (item.qty || 1); }, 0);
+  badge.textContent = totalQty;
 }
