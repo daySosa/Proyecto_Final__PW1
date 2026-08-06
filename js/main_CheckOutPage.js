@@ -26,7 +26,6 @@ const municipiosHonduras = {
   "Islas de la Bahía": ["Roatán", "Utila", "Guanaja", "José Santos Guardiola"]
 };
 
-/* ===== Índice de productos por nombre (para recuperar la imagen en el resumen) ===== */
 const PRODUCTOS_CHECKOUT = Object.assign(
   {},
   window.PRODUCTOS_MAQUILLAJE || {},
@@ -51,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
   initCheckoutValidation();
 });
 
-/* ---------- Sombra del header al hacer scroll ---------- */
 function initHeaderShadow() {
   var header = document.getElementById("siteHeader");
   if (!header) return;
@@ -61,7 +59,6 @@ function initHeaderShadow() {
   });
 }
 
-/* ---------- Menú móvil ---------- */
 function initMobileMenu() {
   var burger = document.getElementById("burgerBtn");
   var mobileMenu = document.getElementById("mobileMenu");
@@ -80,7 +77,6 @@ function initMobileMenu() {
   });
 }
 
-/* ---------- Menú "Más" del escritorio ---------- */
 function initMoreMenu() {
   var navMore = document.getElementById("navMore");
   var moreBtn = document.getElementById("moreBtn");
@@ -107,13 +103,11 @@ function initMoreMenu() {
   });
 }
 
-/* ---------- Año dinámico ---------- */
 function setCurrentYear() {
   var yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 }
 
-/* ---------- Departamento → Municipio ---------- */
 function initMunicipios() {
   var fieldDepartamento = document.getElementById("departamento");
   var fieldMunicipio = document.getElementById("municipio");
@@ -139,7 +133,6 @@ function initMunicipios() {
   });
 }
 
-/* ---------- Resumen de compra (lee el carrito) ---------- */
 function initCheckoutResumen() {
   var checkoutCartItemsContainer = document.getElementById("checkoutCartItems");
   var subtotalElement = document.getElementById("subtotal");
@@ -228,7 +221,6 @@ function initCheckoutResumen() {
   window.checkoutRenderizarResumen = renderizarResumen;
 }
 
-/* ---------- Alternar sección de tarjeta según método de pago ---------- */
 function initPaymentToggle() {
   var cardDataSection = document.getElementById("cardDataSection");
   var paymentRadios = document.querySelectorAll('input[name="pago"]');
@@ -241,7 +233,6 @@ function initPaymentToggle() {
   });
 }
 
-/* ---------- Validación del formulario de checkout ---------- */
 function initCheckoutValidation() {
   var checkoutForm = document.getElementById("checkoutForm");
   var fieldNombre = document.getElementById("nombre");
