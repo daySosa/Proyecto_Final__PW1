@@ -1,8 +1,8 @@
-const CART_KEY = 'pattysCartV1';
+const CART_KEY = 'pattysCart';
 
 const CATALOGOS = {
-  maquillaje: { label: 'Maquillaje', href: 'maquillaje.html', tabExtra: 'Modo de uso' },
-  ropa: { label: 'Ropa', href: 'ropa.html', tabExtra: 'Guía de tallas y cuidado' },
+  maquillaje: { label: 'Maquillaje', href: 'makeup.html', tabExtra: 'Modo de uso' },
+  ropa: { label: 'Ropa', href: 'clothes.html', tabExtra: 'Guía de tallas y cuidado' },
   accesorios: { label: 'Accesorios', href: 'accesorios.html', tabExtra: 'Cuidado y materiales' },
   skincare: { label: 'Skincare', href: 'Producto_Skincare.html', tabExtra: 'Modo de uso' }
 };
@@ -28,13 +28,10 @@ function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-function addToCart(id, name, price, img, qty) {
+function addToCart(name, price, qty) {
   const cart = getCart();
-  const existing = cart.find(item => item.id === id);
-  if (existing) {
-    existing.qty += qty;
-  } else {
-    cart.push({ id, name, price: Number(price), img, qty });
+  for (let i = 0; i < qty; i++) {
+    cart.push({ name, price: Number(price) });
   }
   saveCart(cart);
   updateCartBadge();
@@ -42,12 +39,8 @@ function addToCart(id, name, price, img, qty) {
 
 function updateCartBadge() {
   const cart = getCart();
-  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-
   const badge = document.getElementById('cartBadge');
-  if (badge) {
-    badge.textContent = totalQty;
-  }
+  if (badge) badge.textContent = cart.length;
 }
 
 function renderGaleria(producto) {
@@ -107,7 +100,7 @@ function renderRelacionados(idActual, producto) {
         <h4>${p.nombre}</h4>
         <div class="product-price">
           <strong>L. ${p.precio}</strong>
-          <button class="add-btn cart-add-btn" data-id="${id}" data-name="${p.nombre}" data-price="${p.precio}" data-img="${p.img}" aria-label="Agregar ${p.nombre} al carrito">+</button>
+          <button class="add-btn cart-add-btn" data-name="${p.nombre}" data-price="${p.precio}" aria-label="Agregar ${p.nombre} al carrito">+</button>
         </div>
       </div>
     </article>
@@ -116,8 +109,8 @@ function renderRelacionados(idActual, producto) {
   grid.querySelectorAll('.cart-add-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const { id, name, price, img } = btn.dataset;
-      addToCart(id, name, price, img, 1);
+      const { name, price } = btn.dataset;
+      addToCart(name, price, 1);
     });
   });
 
@@ -206,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   contenido.hidden = false;
   tabsWrap.hidden = false;
 
+  // Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
   tabBtns.forEach(btn => {
@@ -232,14 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('productoAgregarBtn').addEventListener('click', () => {
     const qty = parseInt(cantidadInput.value, 10) || 1;
-    addToCart(id, producto.nombre, producto.precio, producto.img, qty);
+    addToCart(producto.nombre, producto.precio, qty);
     agregadoMsg.hidden = false;
     setTimeout(() => { agregadoMsg.hidden = true; }, 2500);
   });
 
   document.getElementById('productoComprarBtn').addEventListener('click', () => {
     const qty = parseInt(cantidadInput.value, 10) || 1;
-    addToCart(id, producto.nombre, producto.precio, producto.img, qty);
+    addToCart(producto.nombre, producto.precio, qty);
     window.location.href = 'carrito.html';
   });
 
