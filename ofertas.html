@@ -5,188 +5,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofertas y Promociones - Patty's Store</title>
+    <meta name="description"
+        content="Aprovecha descuentos especiales en maquillaje, skincare, ropa y accesorios en Patty's Store.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/ofertas.css">
-    <script src="js/ofertas.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style_OfertasPage.css">
 </head>
 
 <body>
 
     <header id="siteHeader">
         <div class="wrap nav-bar">
-            <a href="index.html" class="logo">Patty<span>'s</span> Store</a>
+            <a href="HomePage.html" class="logo">Patty<span>'s</span> Store</a>
 
-            <nav class="nav-links" aria-label="Navegación principal">
-                <a href="index.html">Inicio</a>
-                <a href="maquillaje.html">Maquillaje</a>
-                <a href="ropa.html">Ropa</a>
-                <a href="accesorios.html">Accesorios</a>
-                <a href="Producto_Skincare.html">Skincare</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
+            <div class="nav-right">
+                <nav class="nav-links" aria-label="Navegación principal">
+                    <a href="HomePage.html">Inicio</a>
+                    <a href="makeup.html">Maquillaje</a>
+                    <a href="clothes.html">Ropa</a>
+                    <a href="accessories.html">Accesorios</a>
+                    <a href="skincare.html">Skincare</a>
+                </nav>
 
-            <div class="nav-actions">
-                <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog"
+                        aria-expanded="false">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
 
-                <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" aria-current="page">
-                    &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
-                </button>
+                    <a href="carrito.html" class="icon-btn cart-icon" aria-label="Ver carrito de compras">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
 
-                <a href="ofertas.html" class="cta-btn ghost cat-cta">Ofertas</a>
+                    <div class="nav-more" id="navMore">
+                        <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
+                            <span class="more-bars"><span></span><span></span><span></span></span>
+                            Más
+                        </button>
 
-                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                        <div class="more-menu" id="moreMenu" role="menu">
+                            <a href="HomePage.html#mision" role="menuitem">Nuestra Misión</a>
+                            <a href="HomePage.html#marcas" role="menuitem">Nuestras Marcas</a>
+                            <a href="ofertas.html" role="menuitem" aria-current="page">Ofertas</a>
+                            <a href="HomePage.html#nosotros" role="menuitem">Nosotras</a>
+                            <a href="contacto.html" role="menuitem">Contacto</a>
+                        </div>
+                    </div>
+
+                    <a href="ofertas.html" class="cta-btn buy-cta" aria-current="page">Ver ofertas</a>
+                </div>
+
+                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="mobileMenu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
 
         <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
-            <a href="index.html">Inicio</a>
-            <a href="maquillaje.html">Maquillaje</a>
-            <a href="ropa.html">Ropa</a>
-            <a href="accesorios.html">Accesorios</a>
-            <a href="Producto_Skincare.html">Skincare</a>
+            <a href="HomePage.html">Inicio</a>
+            <a href="makeup.html">Maquillaje</a>
+            <a href="clothes.html">Ropa</a>
+            <a href="accessories.html">Accesorios</a>
+            <a href="skincare.html">Skincare</a>
             <a href="ofertas.html">Ofertas</a>
+            <a href="HomePage.html#mision">Nuestra Misión</a>
+            <a href="HomePage.html#marcas">Nuestras Marcas</a>
+            <a href="HomePage.html#nosotros">Nosotras</a>
             <a href="contacto.html">Contacto</a>
+            <a href="carrito.html">Carrito</a>
+            <div class="mobile-cta">
+                <a href="ofertas.html" class="cta-btn" style="display:block;text-align:center;">Ver ofertas</a>
+            </div>
         </nav>
     </header>
 
-    <main class="wrap section">
-        <div class="breadcrumb">
-            <a href="index.html">Inicio</a>
-            <span class="sep">/</span>
-            <span class="current">Promociones y Descuentos</span>
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar en Patty's Store">
+        <div class="search-box">
+            <div class="search-input-wrap">
+                <span class="search-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" id="searchInput" placeholder="Busca labiales, vestidos, bolsos, skincare..."
+                    autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios, cuidado personal y
+                    novedades.</p>
+            </div>
         </div>
+    </div>
 
-        <div class="offers-header">
-            <span class="section-eyebrow">Exclusivo por Tiempo Limitado</span>
-            <h1 class="section-title">Ofertas e Imprescindibles</h1>
-            <p class="section-desc">Aprovecha descuentos especiales en maquillaje, skincare, ropa y accesorios seleccionados.</p>
-        </div>
+    <main>
+        <section class="section offers-section">
+            <div class="wrap">
+                <div class="breadcrumb">
+                    <a href="HomePage.html">Inicio</a>
+                    <span class="sep">/</span>
+                    <span class="current">Promociones y Descuentos</span>
+                </div>
 
-        <div class="products-grid">
-            <article class="product-card">
-                <span class="discount-tag">-30% OFF</span>
-                <div class="product-img">
-                    <img src="Ofertas_Img/Oferta_SetMaquillaje.jpg" alt="Set de Maquillaje Glow">
+                <div class="offers-header">
+                    <span class="section-eyebrow">Exclusivo por tiempo limitado</span>
+                    <h1 class="hero-title offers-title">Ofertas e imprescindibles</h1>
+                    <p class="hero-text offers-desc">Aprovecha descuentos especiales en maquillaje, skincare, ropa y
+                        accesorios seleccionados.</p>
                 </div>
-                <div class="product-info">
-                    <span class="product-cat">Maquillaje</span>
-                    <h3 class="product-title">Set de Maquillaje Luminosidad Glow</h3>
-                    <div class="product-price">
-                        <span class="old-price">L. 1,100.00</span>
-                        <span class="current-price">L. 770.00</span>
-                    </div>
-                    <button class="cta-btn add-to-cart-btn" data-id="1">Agregar al Carrito</button>
-                </div>
-            </article>
 
-            <article class="product-card">
-                <span class="discount-tag">-50% OFF</span>
-                <div class="product-img">
-                    <img src="Ofertas_Img/Oferta_Serum.jpg" alt="Sérum Hidratante Skincare">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Skincare</span>
-                    <h3 class="product-title">Sérum Facial Ácido Hialurónico</h3>
-                    <div class="product-price">
-                        <span class="old-price">L. 700.00</span>
-                        <span class="current-price">L. 350.00</span>
-                    </div>
-                    <button class="cta-btn add-to-cart-btn" data-id="2">Agregar al Carrito</button>
-                </div>
-            </article>
-
-            <article class="product-card">
-                <span class="discount-tag">-20% OFF</span>
-                <div class="product-img">
-                    <img src="Ofertas_Img/Oferta_Vestido.jpg" alt="Vestido Satinado">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Ropa</span>
-                    <h3 class="product-title">Vestido Satinado Midi Floral</h3>
-                    <div class="product-price">
-                        <span class="old-price">L. 1,600.00</span>
-                        <span class="current-price">L. 1,280.00</span>
-                    </div>
-                    <button class="cta-btn add-to-cart-btn" data-id="3">Agregar al Carrito</button>
-                </div>
-            </article>
-
-            <article class="product-card">
-                <span class="discount-tag">-40% OFF</span>
-                <div class="product-img">
-                    <img src="Ofertas_Img/Oferta_Collares.jpg" alt="Set de Collares">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Accesorios</span>
-                    <h3 class="product-title">Set de Collares Baño de Oro</h3>
-                    <div class="product-price">
-                        <span class="old-price">L. 850.00</span>
-                        <span class="current-price">L. 510.00</span>
-                    </div>
-                    <button class="cta-btn add-to-cart-btn" data-id="4">Agregar al Carrito</button>
-                </div>
-            </article>
-        </div>
-
-        <section class="promo-banner">
-            <div class="promo-content">
-                <h2>¿Quieres un 10% extra?</h2>
-                <p>Suscríbete a nuestro boletín para recibir ofertas secretas y cupones de descuento directo en tu correo.</p>
-
-                <form id="newsletterForm" novalidate>
-                    <div class="form-group">
-                        <div class="input-inline">
-                            <input type="email" id="newsletterEmail" placeholder="Tu correo electrónico...">
-                            <button type="submit" class="cta-btn">Suscribirme</button>
+                <div class="offers-grid">
+                    <article class="offer-card">
+                        <span class="discount-badge">-30% OFF</span>
+                        <div class="offer-img">
+                            <img src="images/Oferta_SetMaquillaje.jpg" alt="Set de Maquillaje Glow">
                         </div>
+                        <div class="offer-info">
+                            <span class="offer-cat">Maquillaje</span>
+                            <h3 class="offer-title">Set de Maquillaje Luminosidad Glow</h3>
+                            <div class="offer-price">
+                                <span class="old-price">L. 1,100.00</span>
+                                <span class="current-price">L. 770.00</span>
+                            </div>
+                            <button class="add-btn" type="button" data-product="Set de Maquillaje Luminosidad Glow"
+                                data-price="770"
+                                aria-label="Agregar Set de Maquillaje Luminosidad Glow al carrito">Agregar al
+                                Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="offer-card">
+                        <span class="discount-badge">-50% OFF</span>
+                        <div class="offer-img">
+                            <img src="images/Oferta_Serum.jpg" alt="Sérum Hidratante Skincare">
+                        </div>
+                        <div class="offer-info">
+                            <span class="offer-cat">Skincare</span>
+                            <h3 class="offer-title">Sérum Facial Ácido Hialurónico</h3>
+                            <div class="offer-price">
+                                <span class="old-price">L. 700.00</span>
+                                <span class="current-price">L. 350.00</span>
+                            </div>
+                            <button class="add-btn" type="button" data-product="Sérum Facial Ácido Hialurónico"
+                                data-price="350" aria-label="Agregar Sérum Facial Ácido Hialurónico al carrito">Agregar
+                                al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="offer-card">
+                        <span class="discount-badge">-20% OFF</span>
+                        <div class="offer-img">
+                            <img src="images/Oferta_Vestido.jpg" alt="Vestido Satinado">
+                        </div>
+                        <div class="offer-info">
+                            <span class="offer-cat">Ropa</span>
+                            <h3 class="offer-title">Vestido Satinado Midi Floral</h3>
+                            <div class="offer-price">
+                                <span class="old-price">L. 1,600.00</span>
+                                <span class="current-price">L. 1,280.00</span>
+                            </div>
+                            <button class="add-btn" type="button" data-product="Vestido Satinado Midi Floral"
+                                data-price="1280" aria-label="Agregar Vestido Satinado Midi Floral al carrito">Agregar
+                                al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="offer-card">
+                        <span class="discount-badge">-40% OFF</span>
+                        <div class="offer-img">
+                            <img src="images/Oferta_Collares.jpg" alt="Set de Collares">
+                        </div>
+                        <div class="offer-info">
+                            <span class="offer-cat">Accesorios</span>
+                            <h3 class="offer-title">Set de Collares Baño de Oro</h3>
+                            <div class="offer-price">
+                                <span class="old-price">L. 850.00</span>
+                                <span class="current-price">L. 510.00</span>
+                            </div>
+                            <button class="add-btn" type="button" data-product="Set de Collares Baño de Oro"
+                                data-price="510" aria-label="Agregar Set de Collares Baño de Oro al carrito">Agregar al
+                                Carrito</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div class="wrap">
+                <h2>¿Quieres un 10% extra?</h2>
+                <p>Suscríbete a nuestro boletín y recibe ofertas secretas y cupones de descuento directo en tu correo.
+                </p>
+                <form class="newsletter-form" id="newsletterForm" novalidate>
+                    <div class="form-field">
+                        <input type="email" id="newsletterEmail" name="email" placeholder="Tu correo electrónico"
+                            required>
+                        <span class="field-error" id="newsletterError"></span>
                     </div>
+                    <button type="submit">Suscribirme</button>
                 </form>
+                <p class="form-success" id="newsletterSuccess" role="status"></p>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="wrap footer-grid">
-            <div>
-                <h3>Patty's Store</h3>
-                <p>Tu tienda de confianza para realzar tu belleza y estilo con productos seleccionados con amor.</p>
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <h3>Patty's Store</h3>
+                    <p>Maquillaje, ropa y accesorios seleccionados con cariño para realzar tu estilo único. Envíos a
+                        todo Honduras.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Tienda</h4>
+                    <ul>
+                        <li><a href="makeup.html">Maquillaje</a></li>
+                        <li><a href="clothes.html">Ropa</a></li>
+                        <li><a href="accessories.html">Accesorios</a></li>
+                        <li><a href="skincare.html">Skincare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="HomePage.html#marcas">Nuestras marcas</a></li>
+                        <li><a href="HomePage.html#mision">Nuestra misión</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </li>
+                        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        </li>
+                        <li><a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="productos.html">Productos</a></li>
-                    <li><a href="ofertas.html">Ofertas</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <span>© <span id="year"></span> Patty's Store. Todos los derechos reservados.</span>
             </div>
-            <div class="footer-col">
-                <h4>Categorías</h4>
-                <ul>
-                    <li><a href="productos.html?cat=maquillaje">Maquillaje</a></li>
-                    <li><a href="productos.html?cat=ropa">Ropa</a></li>
-                    <li><a href="productos.html?cat=accesorios">Accesorios</a></li>
-                    <li><a href="productos.html?cat=skincare">Skincare</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Ayuda</h4>
-                <ul>
-                    <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Política de Envío</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="wrap footer-bottom">
-            <p>&copy; 2026 Patty's Store. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <script src="js/productos-maquillaje.js"></script>
+    <script src="js/productos-ropa.js"></script>
+    <script src="js/productos-accesorios.js"></script>
+    <script src="js/productos-skincare.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main_OfertasPage.js"></script>
 </body>
 
 </html>
