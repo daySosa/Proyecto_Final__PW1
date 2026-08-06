@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
   initProductDetail();
 });
 
-const CART_KEY = 'pattysCart';
+const CART_KEY = 'pattysCartV1';
 
 const CATALOGOS = {
   maquillaje: { label: 'Maquillaje', href: 'makeup.html', tabExtra: 'Modo de uso' },
-  ropa:       { label: 'Ropa',       href: 'clothes.html', tabExtra: 'Guía de tallas y cuidado' },
+  ropa: { label: 'Ropa', href: 'clothes.html', tabExtra: 'Guía de tallas y cuidado' },
   accesorios: { label: 'Accesorios', href: 'accessories.html', tabExtra: 'Cuidado y materiales' },
-  skincare:   { label: 'Skincare',   href: 'skincare.html', tabExtra: 'Modo de uso' }
+  skincare: { label: 'Skincare', href: 'skincare.html', tabExtra: 'Modo de uso' }
 };
 
 const PRODUCTOS = Object.assign(
@@ -40,9 +40,14 @@ function saveCart(cart) {
 
 function addToCart(name, price, qty) {
   const cart = getCart();
-  for (let i = 0; i < qty; i++) {
-    cart.push({ name, price: Number(price) });
+  const existing = cart.find(function (item) { return item.name === name; });
+
+  if (existing) {
+    existing.qty = (existing.qty || 1) + qty;
+  } else {
+    cart.push({ name: name, price: Number(price), qty: qty });
   }
+
   saveCart(cart);
   updateCartBadge();
 }
@@ -50,7 +55,9 @@ function addToCart(name, price, qty) {
 function updateCartBadge() {
   const cart = getCart();
   const badge = document.getElementById('cartBadge');
-  if (badge) badge.textContent = cart.length;
+  if (!badge) return;
+  const totalQty = cart.reduce(function (sum, item) { return sum + (item.qty || 1); }, 0);
+  badge.textContent = totalQty;
 }
 
 function initMobileMenu() {
