@@ -5,56 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto y Nosotros - Patty's Store</title>
+    <meta name="description" content="Contáctanos, conoce nuestra historia y resuelve tus dudas en Patty's Store.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/contacto.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style_ContactPage.css">
 </head>
 
 <body>
 
     <header id="siteHeader">
         <div class="wrap nav-bar">
-            <a href="index.html" class="logo">Patty<span>'s</span> Store</a>
+            <a href="HomePage.html" class="logo">Patty<span>'s</span> Store</a>
 
-            <nav class="nav-links" aria-label="Navegación principal">
-                <a href="index.html">Inicio</a>
-                <a href="maquillaje.html">Maquillaje</a>
-                <a href="clothes.html">Ropa</a>
-                <a href="accessories.html">Accesorios</a>
-                <a href="Producto_Skincare.html">Skincare</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
+            <div class="nav-right">
+                <nav class="nav-links" aria-label="Navegación principal">
+                    <a href="HomePage.html">Inicio</a>
+                    <a href="makeup.html">Maquillaje</a>
+                    <a href="clothes.html">Ropa</a>
+                    <a href="accessories.html">Accesorios</a>
+                    <a href="skincare.html">Skincare</a>
+                </nav>
 
-            <div class="nav-actions">
-                <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog" aria-expanded="false">&#128269;</button>
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchTrigger" aria-label="Buscar productos" aria-haspopup="dialog"
+                        aria-expanded="false">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
 
-                <button class="icon-btn cart-btn" id="cartTrigger" aria-label="Ver carrito" aria-current="page">
-                    &#128722;<span class="cart-badge" id="cartCount" hidden>0</span>
-                </button>
+                    <a href="carrito.html" class="icon-btn cart-icon" aria-label="Ver carrito de compras">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
 
-                <a href="ofertas.html" class="cta-btn ghost cat-cta">Ofertas</a>
+                    <div class="nav-more" id="navMore">
+                        <button class="more-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false">
+                            <span class="more-bars"><span></span><span></span><span></span></span>
+                            Más
+                        </button>
 
-                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+                        <div class="more-menu" id="moreMenu" role="menu">
+                            <a href="HomePage.html#mision" role="menuitem">Nuestra Misión</a>
+                            <a href="HomePage.html#marcas" role="menuitem">Nuestras Marcas</a>
+                            <a href="ofertas.html" role="menuitem">Ofertas</a>
+                            <a href="HomePage.html#nosotros" role="menuitem">Nosotras</a>
+                            <a href="contacto.html" role="menuitem" aria-current="page">Contacto</a>
+                        </div>
+                    </div>
+
+                    <a href="ofertas.html" class="cta-btn buy-cta">Ver ofertas</a>
+                </div>
+
+                <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="mobileMenu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
 
         <nav class="mobile-menu" id="mobileMenu" aria-label="Navegación móvil">
-            <a href="index.html">Inicio</a>
-            <a href="maquillaje.html">Maquillaje</a>
+            <a href="HomePage.html">Inicio</a>
+            <a href="makeup.html">Maquillaje</a>
             <a href="clothes.html">Ropa</a>
             <a href="accessories.html">Accesorios</a>
-            <a href="Producto_Skincare.html">Skincare</a>
+            <a href="skincare.html">Skincare</a>
             <a href="ofertas.html">Ofertas</a>
+            <a href="HomePage.html#mision">Nuestra Misión</a>
+            <a href="HomePage.html#marcas">Nuestras Marcas</a>
+            <a href="HomePage.html#nosotros">Nosotras</a>
             <a href="contacto.html">Contacto</a>
+            <a href="carrito.html">Carrito</a>
+            <div class="mobile-cta">
+                <a href="ofertas.html" class="cta-btn" style="display:block;text-align:center;">Ver ofertas</a>
+            </div>
         </nav>
     </header>
 
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar en Patty's Store">
+        <div class="search-box">
+            <div class="search-input-wrap">
+                <span class="search-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" id="searchInput" placeholder="Busca labiales, vestidos, bolsos, skincare..."
+                    autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios y cuidado personal.</p>
+            </div>
+        </div>
+    </div>
+
     <main class="wrap section">
         <div class="breadcrumb">
-            <a href="index.html">Inicio</a>
+            <a href="HomePage.html">Inicio</a>
             <span class="sep">/</span>
             <span class="current">Contacto y Nosotros</span>
         </div>
@@ -62,7 +123,8 @@
         <div class="page-header">
             <span class="section-eyebrow">Conócenos y Escríbenos</span>
             <h1 class="section-title">Sobre Nosotros y Atención al Cliente</h1>
-            <p class="section-desc">Estamos aquí para asesorarte. Conoce nuestra historia, contáctanos directamente o revisa las preguntas frecuentes.</p>
+            <p class="section-desc">Estamos aquí para asesorarte. Conoce nuestra historia, contáctanos directamente o
+                revisa las preguntas frecuentes.</p>
         </div>
 
         <section class="about-section mb-60">
@@ -70,13 +132,21 @@
                 <div class="about-content">
                     <span class="section-eyebrow">Nuestra Historia</span>
                     <h2>Pasión por Resaltar tu Belleza</h2>
-                    <p>En <strong>Patty's Store</strong> nacimos con la misión de ofrecer una selección exclusiva de productos de maquillaje, cuidado de la piel, moda y accesorios diseñados para hacerte sentir radiante y segura todos los días.</p>
-                    <p>Nos encargamos de curar cuidadosamente cada marca e ingrediente para garantizar máxima calidad, autenticidad y elegancia en cada envío que llega a tu puerta.</p>
+                    <p>En <strong>Patty's Store</strong> nacimos con la misión de ofrecer una selección exclusiva de
+                        productos de maquillaje, cuidado de la piel, moda y accesorios diseñados para hacerte sentir
+                        radiante y segura todos los días.</p>
+                    <p>Nos encargamos de curar cuidadosamente cada marca e ingrediente para garantizar máxima calidad,
+                        autenticidad y elegancia en cada envío que llega a tu puerta.</p>
                 </div>
                 <div class="about-highlights">
                     <div class="highlight-item">
                         <span class="highlight-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                </path>
+                            </svg>
                         </span>
                         <div>
                             <h4>Calidad Garantizada</h4>
@@ -85,7 +155,15 @@
                     </div>
                     <div class="highlight-item">
                         <span class="highlight-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
                         </span>
                         <div>
                             <h4>Envíos Seguros</h4>
@@ -94,7 +172,12 @@
                     </div>
                     <div class="highlight-item">
                         <span class="highlight-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
                         </span>
                         <div>
                             <h4>Atención Cercana</h4>
@@ -139,7 +222,8 @@
 
                     <div class="form-group mb-20" id="group-mensaje">
                         <label for="mensaje">Mensaje *</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe aquí tu consulta o comentario..."></textarea>
+                        <textarea id="mensaje" name="mensaje" rows="5"
+                            placeholder="Escribe aquí tu consulta o comentario..."></textarea>
                     </div>
 
                     <button type="submit" class="cta-btn submit-btn">Enviar Mensaje</button>
@@ -154,7 +238,11 @@
                 <ul class="info-list">
                     <li>
                         <span class="info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                         </span>
                         <div>
                             <strong>Dirección</strong>
@@ -163,7 +251,12 @@
                     </li>
                     <li>
                         <span class="info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
                         </span>
                         <div>
                             <strong>Teléfono / WhatsApp</strong>
@@ -172,7 +265,12 @@
                     </li>
                     <li>
                         <span class="info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
                         </span>
                         <div>
                             <strong>Correo de Atención</strong>
@@ -181,7 +279,11 @@
                     </li>
                     <li>
                         <span class="info-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
                         </span>
                         <div>
                             <strong>Horarios de Atención</strong>
@@ -206,7 +308,8 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Aceptamos pagos con tarjeta de crédito o débito (Visa, Mastercard) y pago contra entrega en zonas seleccionadas.</p>
+                        <p>Aceptamos pagos con tarjeta de crédito o débito (Visa, Mastercard) y pago contra entrega en
+                            zonas seleccionadas.</p>
                     </div>
                 </details>
 
@@ -216,7 +319,8 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Los envíos en zona metropolitana tardan entre 24 y 48 horas hábiles. Para el resto del país, la entrega toma entre 2 y 4 días hábiles mediante transporte expreso.</p>
+                        <p>Los envíos en zona metropolitana tardan entre 24 y 48 horas hábiles. Para el resto del país,
+                            la entrega toma entre 2 y 4 días hábiles mediante transporte expreso.</p>
                     </div>
                 </details>
 
@@ -226,7 +330,9 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Escríbenos inmediatamente mediante el formulario de contacto o WhatsApp adjuntando fotos del empaque y del producto en un plazo máximo de 48 horas tras recibirlo para gestionar tu cambio o reembolso.</p>
+                        <p>Escríbenos inmediatamente mediante el formulario de contacto o WhatsApp adjuntando fotos del
+                            empaque y del producto en un plazo máximo de 48 horas tras recibirlo para gestionar tu
+                            cambio o reembolso.</p>
                     </div>
                 </details>
 
@@ -236,7 +342,8 @@
                         <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>En la descripción de cada producto detallamos el tipo de piel recomendado. Si tienes dudas o piel sensible, nuestro equipo puede asesorarte previamente por mensaje.</p>
+                        <p>En la descripción de cada producto detallamos el tipo de piel recomendado. Si tienes dudas o
+                            piel sensible, nuestro equipo puede asesorarte previamente por mensaje.</p>
                     </div>
                 </details>
             </div>
@@ -244,44 +351,55 @@
     </main>
 
     <footer>
-        <div class="wrap footer-grid">
-            <div>
-                <h3>Patty's Store</h3>
-                <p>Tu tienda de confianza para realzar tu belleza y estilo con productos seleccionados con amor.</p>
+        <div class="wrap">
+            <div class="footer-grid">
+                <div>
+                    <h3>Patty's Store</h3>
+                    <p>Maquillaje, ropa y accesorios seleccionados con cariño para realzar tu estilo único. Envíos a
+                        todo Honduras.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Tienda</h4>
+                    <ul>
+                        <li><a href="makeup.html">Maquillaje</a></li>
+                        <li><a href="clothes.html">Ropa</a></li>
+                        <li><a href="accessories.html">Accesorios</a></li>
+                        <li><a href="skincare.html">Skincare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ayuda</h4>
+                    <ul>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="contacto.html#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="HomePage.html#marcas">Nuestras marcas</a></li>
+                        <li><a href="HomePage.html#mision">Nuestra misión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        </li>
+                        <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        </li>
+                        <li><a href="https://wa.me/50431513309" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="productos.html">Productos</a></li>
-                    <li><a href="ofertas.html">Ofertas</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <span>© <span id="year"></span> Patty's Store. Todos los derechos reservados.</span>
             </div>
-            <div class="footer-col">
-                <h4>Categorías</h4>
-                <ul>
-                    <li><a href="productos.html?cat=maquillaje">Maquillaje</a></li>
-                    <li><a href="productos.html?cat=ropa">Ropa</a></li>
-                    <li><a href="productos.html?cat=accesorios">Accesorios</a></li>
-                    <li><a href="Producto_Skincare.html">Skincare</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Ayuda</h4>
-                <ul>
-                    <li><a href="contacto.html#faq">Preguntas Frecuentes</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Política de Envío</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="wrap footer-bottom">
-            <p>&copy; 2026 Patty's Store. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="js/contacto.js"></script>
+    <script src="js/productos-maquillaje.js"></script>
+    <script src="js/productos-ropa.js"></script>
+    <script src="js/productos-accesorios.js"></script>
+    <script src="js/productos-skincare.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main_ContactPage.js"></script>
 </body>
 
 </html>
