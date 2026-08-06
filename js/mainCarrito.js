@@ -1,6 +1,19 @@
-const CART_KEY = 'pattysCartV1';
+const CART_KEY = 'pattysCart';
 const ENVIO_COSTO = 60;
 const ENVIO_GRATIS_DESDE = 1000;
+
+const PRODUCTOS = Object.assign(
+  {},
+  window.PRODUCTOS_MAQUILLAJE || {},
+  window.PRODUCTOS_ROPA || {},
+  window.PRODUCTOS_ACCESORIOS || {},
+  window.PRODUCTOS_SKINCARE || {}
+);
+
+const PRODUCTOS_POR_NOMBRE = {};
+Object.entries(PRODUCTOS).forEach(([id, p]) => {
+  PRODUCTOS_POR_NOMBRE[p.nombre] = { id, img: p.img };
+});
 
 function getCart() {
   try {
@@ -17,25 +30,49 @@ function saveCart(cart) {
 
 function updateCartBadge() {
   const cart = getCart();
-  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-
   const badge = document.getElementById('cartBadge');
-  if (badge) badge.textContent = totalQty;
+  if (badge) badge.textContent = cart.length;
 }
 
 function formatMoney(n) {
   return 'L. ' + n.toLocaleString('es-HN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
+function groupCart(cart) {
+  const map = new Map();
+  const groups = [];
+
+  cart.forEach(item => {
+    const key = item.name + '|' + item.price;
+    if (map.has(key)) {
+      map.get(key).qty += 1;
+    } else {
+      const info = PRODUCTOS_POR_NOMBRE[item.name];
+      const group = {
+        name: item.name,
+        price: Number(item.price),
+        qty: 1,
+        img: info ? info.img : '',
+        id: info ? info.id : null
+      };
+      map.set(key, group);
+      groups.push(group);
+    }
+  });
+
+  return groups;
+}
+
 function renderCarrito() {
   const cart = getCart();
+  const groups = groupCart(cart);
   const itemsWrap = document.getElementById('carritoItems');
   const emptyState = document.getElementById('carritoVacio');
   const contentState = document.getElementById('carritoConContenido');
 
   updateCartBadge();
 
-  if (cart.length === 0) {
+  if (groups.length === 0) {
     emptyState.hidden = false;
     contentState.hidden = true;
     return;
@@ -44,19 +81,23 @@ function renderCarrito() {
   emptyState.hidden = true;
   contentState.hidden = false;
 
-  itemsWrap.innerHTML = cart.map(item => `
-    <article class="carrito-item" data-id="${item.id}">
-      <div class="carrito-item-img"><img src="${item.img}" alt="${item.name}"></div>
+  itemsWrap.innerHTML = groups.map(item => `
+    <article class="carrito-item" data-name="${escapeAttr(item.name)}" data-price="${item.price}">
+      <div class="carrito-item-img">
+        ${item.img
+          ? `<img src="${item.img}" alt="${escapeAttr(item.name)}">`
+          : `<div class="carrito-item-img-placeholder" aria-hidden="true">🛍️</div>`}
+      </div>
       <div class="carrito-item-info">
-        <h3><a href="producto.html?id=${item.id}">${item.name}</a></h3>
+        <h3>${item.id ? `<a href="producto.html?id=${item.id}">${item.name}</a>` : item.name}</h3>
         <p class="carrito-item-precio-unit">${formatMoney(item.price)} c/u</p>
         <div class="carrito-item-controls">
           <div class="carrito-cantidad">
-            <button type="button" class="qty-menos" aria-label="Reducir cantidad de ${item.name}">−</button>
+            <button type="button" class="qty-menos" aria-label="Reducir cantidad de ${escapeAttr(item.name)}">−</button>
             <span>${item.qty}</span>
-            <button type="button" class="qty-mas" aria-label="Aumentar cantidad de ${item.name}">+</button>
+            <button type="button" class="qty-mas" aria-label="Aumentar cantidad de ${escapeAttr(item.name)}">+</button>
           </div>
-          <button type="button" class="carrito-remove" aria-label="Quitar ${item.name} del carrito">Quitar</button>
+          <button type="button" class="carrito-remove" aria-label="Quitar ${escapeAttr(item.name)} del carrito">Quitar</button>
         </div>
       </div>
       <div class="carrito-item-subtotal">${formatMoney(item.price * item.qty)}</div>
@@ -64,37 +105,48 @@ function renderCarrito() {
   `).join('');
 
   attachItemEvents();
-  renderResumen(cart);
+  renderResumen(groups);
+}
+
+function escapeAttr(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 }
 
 function attachItemEvents() {
   document.querySelectorAll('.carrito-item').forEach(el => {
-    const id = el.dataset.id;
+    const name = el.dataset.name;
+    const price = Number(el.dataset.price);
 
-    el.querySelector('.qty-menos').addEventListener('click', () => changeQty(id, -1));
-    el.querySelector('.qty-mas').addEventListener('click', () => changeQty(id, 1));
-    el.querySelector('.carrito-remove').addEventListener('click', () => removeItem(id));
+    el.querySelector('.qty-menos').addEventListener('click', () => changeQty(name, price, -1));
+    el.querySelector('.qty-mas').addEventListener('click', () => changeQty(name, price, 1));
+    el.querySelector('.carrito-remove').addEventListener('click', () => removeItem(name, price));
   });
 }
 
-function changeQty(id, delta) {
+function changeQty(name, price, delta) {
   const cart = getCart();
-  const item = cart.find(i => i.id === id);
-  if (!item) return;
 
-  item.qty = Math.max(1, item.qty + delta);
+  if (delta > 0) {
+    cart.push({ name, price });
+  } else {
+    const idx = cart.findIndex(i => i.name === name && Number(i.price) === price);
+    if (idx !== -1) cart.splice(idx, 1);
+  }
+
   saveCart(cart);
   renderCarrito();
 }
 
-function removeItem(id) {
-  const cart = getCart().filter(i => i.id !== id);
+function removeItem(name, price) {
+  const cart = getCart().filter(i => !(i.name === name && Number(i.price) === price));
   saveCart(cart);
   renderCarrito();
 }
 
-function renderResumen(cart) {
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+function renderResumen(groups) {
+  const subtotal = groups.reduce((sum, item) => sum + item.price * item.qty, 0);
   const envioGratis = subtotal >= ENVIO_GRATIS_DESDE;
   const envio = envioGratis ? 0 : ENVIO_COSTO;
   const total = subtotal + envio;
