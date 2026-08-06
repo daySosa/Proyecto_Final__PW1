@@ -1,10 +1,20 @@
+document.addEventListener('DOMContentLoaded', function () {
+  initMobileMenu();
+  initMoreMenu();
+  initHeaderShadow();
+  setCurrentYear();
+  initSearch();
+  updateCartBadge();
+  initProductDetail();
+});
+
 const CART_KEY = 'pattysCart';
 
 const CATALOGOS = {
   maquillaje: { label: 'Maquillaje', href: 'makeup.html', tabExtra: 'Modo de uso' },
-  ropa: { label: 'Ropa', href: 'clothes.html', tabExtra: 'Guía de tallas y cuidado' },
-  accesorios: { label: 'Accesorios', href: 'accesorios.html', tabExtra: 'Cuidado y materiales' },
-  skincare: { label: 'Skincare', href: 'Producto_Skincare.html', tabExtra: 'Modo de uso' }
+  ropa:       { label: 'Ropa',       href: 'clothes.html', tabExtra: 'Guía de tallas y cuidado' },
+  accesorios: { label: 'Accesorios', href: 'accessories.html', tabExtra: 'Cuidado y materiales' },
+  skincare:   { label: 'Skincare',   href: 'skincare.html', tabExtra: 'Modo de uso' }
 };
 
 const PRODUCTOS = Object.assign(
@@ -41,6 +51,159 @@ function updateCartBadge() {
   const cart = getCart();
   const badge = document.getElementById('cartBadge');
   if (badge) badge.textContent = cart.length;
+}
+
+function initMobileMenu() {
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!burger || !mobileMenu) return;
+
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+function initMoreMenu() {
+  const navMore = document.getElementById('navMore');
+  const moreBtn = document.getElementById('moreBtn');
+  if (!navMore || !moreBtn) return;
+
+  moreBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = navMore.classList.toggle('open');
+    moreBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!navMore.contains(event.target)) {
+      navMore.classList.remove('open');
+      moreBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+function initHeaderShadow() {
+  const header = document.getElementById('siteHeader');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+}
+
+function setCurrentYear() {
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+function initSearch() {
+  const trigger = document.getElementById('searchTrigger');
+  const overlay = document.getElementById('searchOverlay');
+  const closeBtn = document.getElementById('searchClose');
+  const input = document.getElementById('searchInput');
+  const resultsBox = document.getElementById('searchResults');
+  if (!trigger || !overlay || !input || !resultsBox) return;
+
+  const index = buildSearchIndex();
+
+  function openSearch() {
+    overlay.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => input.focus(), 50);
+  }
+
+  function closeSearch() {
+    overlay.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  trigger.addEventListener('click', () => {
+    overlay.classList.contains('open') ? closeSearch() : openSearch();
+  });
+
+  closeBtn.addEventListener('click', closeSearch);
+
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) closeSearch();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && overlay.classList.contains('open')) closeSearch();
+  });
+
+  input.addEventListener('input', () => renderResults(input.value.trim()));
+
+  function renderResults(query) {
+    if (query === '') {
+      resultsBox.innerHTML = '<p class="search-hint">Escribe para buscar en maquillaje, ropa, accesorios y cuidado personal.</p>';
+      return;
+    }
+
+    const q = normalize(query);
+    const matches = index.filter(item => item.searchText.indexOf(q) !== -1);
+
+    if (matches.length === 0) {
+      resultsBox.innerHTML = '<p class="search-empty">No encontramos resultados para "' + escapeHtml(query) + '". Prueba con otra palabra.</p>';
+      return;
+    }
+
+    resultsBox.innerHTML = '';
+    matches.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'search-result-item';
+      row.innerHTML =
+        '<div class="search-result-thumb"><img src="' + item.image + '" alt=""></div>' +
+        '<div class="search-result-info"><strong>' + highlight(item.title, query) + '</strong><span>' + item.tag + '</span></div>' +
+        '<div class="search-result-price">L. ' + item.price + '</div>';
+
+      row.addEventListener('click', () => {
+        window.location.href = 'producto.html?id=' + item.id;
+      });
+      resultsBox.appendChild(row);
+    });
+  }
+
+  function buildSearchIndex() {
+    return Object.entries(PRODUCTOS).map(([id, p]) => {
+      const catalogo = CATALOGOS[p.linea] || { label: p.linea };
+      return {
+        id,
+        title: p.nombre,
+        tag: catalogo.label + ' · ' + p.categoria,
+        price: p.precio,
+        image: p.img,
+        searchText: normalize(p.nombre + ' ' + p.categoria + ' ' + catalogo.label)
+      };
+    });
+  }
+
+  function normalize(text) {
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function highlight(title, query) {
+    const safeTitle = escapeHtml(title);
+    const safeQuery = escapeHtml(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (!safeQuery) return safeTitle;
+    const re = new RegExp('(' + safeQuery + ')', 'ig');
+    return safeTitle.replace(re, '<mark>$1</mark>');
+  }
 }
 
 function renderGaleria(producto) {
@@ -117,42 +280,7 @@ function renderRelacionados(idActual, producto) {
   wrap.hidden = false;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  updateCartBadge();
-
-  const searchTrigger = document.getElementById('searchTrigger');
-  const searchOverlay = document.getElementById('searchOverlay');
-  const searchClose = document.getElementById('searchClose');
-  if (searchTrigger && searchOverlay) {
-    searchTrigger.addEventListener('click', () => searchOverlay.classList.add('open'));
-  }
-  if (searchClose && searchOverlay) {
-    searchClose.addEventListener('click', () => searchOverlay.classList.remove('open'));
-  }
-  if (searchOverlay) {
-    searchOverlay.addEventListener('click', (e) => {
-      if (e.target === searchOverlay) searchOverlay.classList.remove('open');
-    });
-  }
-
-  const moreBtn = document.getElementById('moreBtn');
-  const navMore = document.getElementById('navMore');
-  if (moreBtn && navMore) {
-    moreBtn.addEventListener('click', () => navMore.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!navMore.contains(e.target)) navMore.classList.remove('open');
-    });
-  }
-
-  const burgerBtn = document.getElementById('burgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  }
-
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
+function initProductDetail() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   const producto = id ? PRODUCTOS[id] : null;
@@ -166,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const catalogo = CATALOGOS[producto.linea] || { label: producto.linea, href: 'index.html', tabExtra: 'Detalles' };
+  const catalogo = CATALOGOS[producto.linea] || { label: producto.linea, href: 'HomePage.html', tabExtra: 'Detalles' };
 
   document.title = producto.nombre + " — Patty's Store";
 
@@ -199,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
   contenido.hidden = false;
   tabsWrap.hidden = false;
 
-  // Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
   tabBtns.forEach(btn => {
@@ -238,4 +365,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderRelacionados(id, producto);
-});
+}
