@@ -1,4 +1,4 @@
-const CART_KEY = 'pattysCart';
+const CART_KEY = 'pattysCartV1';
 const ENVIO_COSTO = 60;
 const ENVIO_GRATIS_DESDE = 1000;
 
@@ -28,51 +28,42 @@ function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
+function cartTotalQty(cart) {
+  return cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+}
+
 function updateCartBadge() {
-  const cart = getCart();
   const badge = document.getElementById('cartBadge');
-  if (badge) badge.textContent = cart.length;
+  if (!badge) return;
+  badge.textContent = cartTotalQty(getCart());
 }
 
 function formatMoney(n) {
   return 'L. ' + n.toLocaleString('es-HN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
-function groupCart(cart) {
-  const map = new Map();
-  const groups = [];
-
-  cart.forEach(item => {
-    const key = item.name + '|' + item.price;
-    if (map.has(key)) {
-      map.get(key).qty += 1;
-    } else {
-      const info = PRODUCTOS_POR_NOMBRE[item.name];
-      const group = {
-        name: item.name,
-        price: Number(item.price),
-        qty: 1,
-        img: info ? info.img : '',
-        id: info ? info.id : null
-      };
-      map.set(key, group);
-      groups.push(group);
-    }
+function enrichCart(cart) {
+  return cart.map(item => {
+    const info = PRODUCTOS_POR_NOMBRE[item.name];
+    return {
+      name: item.name,
+      price: Number(item.price),
+      qty: item.qty || 1,
+      img: info ? info.img : '',
+      id: info ? info.id : null
+    };
   });
-
-  return groups;
 }
 
 function renderCarrito() {
-  const cart = getCart();
-  const groups = groupCart(cart);
+  const items = enrichCart(getCart());
   const itemsWrap = document.getElementById('carritoItems');
   const emptyState = document.getElementById('carritoVacio');
   const contentState = document.getElementById('carritoConContenido');
 
   updateCartBadge();
 
-  if (groups.length === 0) {
+  if (items.length === 0) {
     emptyState.hidden = false;
     contentState.hidden = true;
     return;
@@ -81,12 +72,12 @@ function renderCarrito() {
   emptyState.hidden = true;
   contentState.hidden = false;
 
-  itemsWrap.innerHTML = groups.map(item => `
+  itemsWrap.innerHTML = items.map(item => `
     <article class="carrito-item" data-name="${escapeAttr(item.name)}" data-price="${item.price}">
       <div class="carrito-item-img">
         ${item.img
-          ? `<img src="${item.img}" alt="${escapeAttr(item.name)}">`
-          : `<div class="carrito-item-img-placeholder" aria-hidden="true">🛍️</div>`}
+      ? `<img src="${item.img}" alt="${escapeAttr(item.name)}">`
+      : `<div class="carrito-item-img-placeholder" aria-hidden="true">🛍️</div>`}
       </div>
       <div class="carrito-item-info">
         <h3>${item.id ? `<a href="producto.html?id=${item.id}">${item.name}</a>` : item.name}</h3>
@@ -105,7 +96,7 @@ function renderCarrito() {
   `).join('');
 
   attachItemEvents();
-  renderResumen(groups);
+  renderResumen(items);
 }
 
 function escapeAttr(text) {
@@ -127,12 +118,13 @@ function attachItemEvents() {
 
 function changeQty(name, price, delta) {
   const cart = getCart();
+  const item = cart.find(i => i.name === name && Number(i.price) === price);
+  if (!item) return;
 
-  if (delta > 0) {
-    cart.push({ name, price });
-  } else {
-    const idx = cart.findIndex(i => i.name === name && Number(i.price) === price);
-    if (idx !== -1) cart.splice(idx, 1);
+  item.qty = (item.qty || 1) + delta;
+
+  if (item.qty <= 0) {
+    cart.splice(cart.indexOf(item), 1);
   }
 
   saveCart(cart);
@@ -145,8 +137,8 @@ function removeItem(name, price) {
   renderCarrito();
 }
 
-function renderResumen(groups) {
-  const subtotal = groups.reduce((sum, item) => sum + item.price * item.qty, 0);
+function renderResumen(items) {
+  const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
   const envioGratis = subtotal >= ENVIO_GRATIS_DESDE;
   const envio = envioGratis ? 0 : ENVIO_COSTO;
   const total = subtotal + envio;
@@ -168,41 +160,70 @@ function renderResumen(groups) {
   document.getElementById('resumenTotal').textContent = formatMoney(total);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderCarrito();
-
-  const searchTrigger = document.getElementById('searchTrigger');
-  const searchOverlay = document.getElementById('searchOverlay');
-  const searchClose = document.getElementById('searchClose');
-  if (searchTrigger && searchOverlay) {
-    searchTrigger.addEventListener('click', () => searchOverlay.classList.add('open'));
-  }
-  if (searchClose && searchOverlay) {
-    searchClose.addEventListener('click', () => searchOverlay.classList.remove('open'));
-  }
-  if (searchOverlay) {
-    searchOverlay.addEventListener('click', (e) => {
-      if (e.target === searchOverlay) searchOverlay.classList.remove('open');
-    });
-  }
-
+function initMobileMenu() {
   const burgerBtn = document.getElementById('burgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-  }
+  if (!burgerBtn || !mobileMenu) return;
 
-  const moreBtn = document.getElementById('moreBtn');
-  const navMore = document.getElementById('navMore');
-  if (moreBtn && navMore) {
-    moreBtn.addEventListener('click', () => navMore.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!navMore.contains(e.target)) navMore.classList.remove('open');
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
     });
-  }
+  });
+}
 
+function initMoreMenu() {
+  const navMore = document.getElementById('navMore');
+  const moreBtn = document.getElementById('moreBtn');
+  if (!navMore || !moreBtn) return;
+
+  moreBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navMore.classList.toggle('open');
+    moreBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navMore.contains(e.target)) {
+      navMore.classList.remove('open');
+      moreBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  navMore.querySelectorAll('.more-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMore.classList.remove('open');
+      moreBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+function initHeaderShadow() {
+  const header = document.getElementById('siteHeader');
+  if (!header) return;
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+}
+
+function setCurrentYear() {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCarrito();
+  initMobileMenu();
+  initMoreMenu();
+  initHeaderShadow();
+  setCurrentYear();
 
   const vaciarBtn = document.getElementById('carritoVaciarBtn');
   if (vaciarBtn) {
