@@ -26,11 +26,24 @@ const municipiosHonduras = {
   "Islas de la Bahía": ["Roatán", "Utila", "Guanaja", "José Santos Guardiola"]
 };
 
+/* ===== Índice de productos por nombre (para recuperar la imagen en el resumen) ===== */
+const PRODUCTOS_CHECKOUT = Object.assign(
+  {},
+  window.PRODUCTOS_MAQUILLAJE || {},
+  window.PRODUCTOS_ROPA || {},
+  window.PRODUCTOS_ACCESORIOS || {},
+  window.PRODUCTOS_SKINCARE || {}
+);
+
+const PRODUCTOS_POR_NOMBRE_CHECKOUT = {};
+Object.values(PRODUCTOS_CHECKOUT).forEach(function (p) {
+  PRODUCTOS_POR_NOMBRE_CHECKOUT[p.nombre] = p.img;
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   initHeaderShadow();
   initMobileMenu();
   initMoreMenu();
-  initSearch();
   setCurrentYear();
   initMunicipios();
   initCheckoutResumen();
@@ -58,6 +71,13 @@ function initMobileMenu() {
     var isOpen = mobileMenu.classList.toggle("open");
     burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
+
+  mobileMenu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      mobileMenu.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+    });
+  });
 }
 
 /* ---------- Menú "Más" del escritorio ---------- */
@@ -78,29 +98,12 @@ function initMoreMenu() {
       moreBtn.setAttribute("aria-expanded", "false");
     }
   });
-}
 
-/* ---------- Buscador (abrir/cerrar overlay) ---------- */
-function initSearch() {
-  var trigger = document.getElementById("searchTrigger");
-  var overlay = document.getElementById("searchOverlay");
-  var closeBtn = document.getElementById("searchClose");
-  if (!trigger || !overlay || !closeBtn) return;
-
-  trigger.addEventListener("click", function () {
-    overlay.classList.toggle("open");
-  });
-
-  closeBtn.addEventListener("click", function () {
-    overlay.classList.remove("open");
-  });
-
-  overlay.addEventListener("click", function (event) {
-    if (event.target === overlay) overlay.classList.remove("open");
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") overlay.classList.remove("open");
+  navMore.querySelectorAll(".more-menu a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navMore.classList.remove("open");
+      moreBtn.setAttribute("aria-expanded", "false");
+    });
   });
 }
 
@@ -151,7 +154,16 @@ function initCheckoutResumen() {
 
   function renderizarResumen() {
     var cartData = localStorage.getItem("pattysCartV1");
-    carrito = cartData ? JSON.parse(cartData) : [];
+    var rawCarrito = cartData ? JSON.parse(cartData) : [];
+
+    carrito = rawCarrito.map(function (item) {
+      return {
+        name: item.name,
+        price: Number(item.price),
+        qty: item.qty || 1,
+        img: PRODUCTOS_POR_NOMBRE_CHECKOUT[item.name] || ""
+      };
+    });
 
     if (!checkoutCartItemsContainer) return;
 
@@ -171,7 +183,7 @@ function initCheckoutResumen() {
         itemRow.className = "checkout-item-row";
         itemRow.innerHTML =
           '<div class="checkout-item-info">' +
-          '<img src="' + (item.img || '') + '" alt="' + item.name + '" class="checkout-item-img">' +
+          '<img src="' + item.img + '" alt="' + item.name + '" class="checkout-item-img">' +
           '<div>' +
           '<strong class="checkout-item-title">' + item.name + '</strong>' +
           '<span class="checkout-item-qty">Cant: ' + item.qty + '</span>' +
@@ -184,7 +196,6 @@ function initCheckoutResumen() {
 
     if (cartBadge) {
       cartBadge.textContent = totalUnidades;
-      cartBadge.hidden = totalUnidades === 0;
     }
     calcularTotales();
   }
